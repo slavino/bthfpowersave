@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent"
+		android:orientation="vertical">
+	<LinearLayout 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+		<LinearLayout 
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+				<ToggleButton 
+					android:textOn="@string/toggleButton_YES"
+					android:textOff="@string/toggleButton_NO" 
+					android:id="@+id/SwitchOffBTAfterCallEndedToggleButton" 
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content">
+				</ToggleButton>
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" 
+					android:text="@string/keepBtOnAfterCallEnded"
+					android:textSize="15sp" />
+		</LinearLayout> 
+		<TextView 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content" 
+			android:text="@string/infoText"
+			android:orientation="horizontal"
+	  		android:gravity="center"
+	  		android:textSize="12dp"
+	  		android:layout_marginTop="50dp"/>
+	</LinearLayout>
+</LinearLayout>
