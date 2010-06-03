@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="app_name">BTHF PowerSave</string>
+	<string name="save_config">Save</string>
+	<string name="toggleButton_YES">YES</string>
+	<string name="toggleButton_NO">NO</string>
+	<string name="keepBtOnAfterCallEnded">Keep phone\u0027s bluetooth module switched ON after call ended</string>
+	<string name="infoText">Visit http://hustaty.com/android for more information about this product.</string>
+
+</resources>
