@@ -11,7 +11,7 @@ public class WidgetConfigurationHolder {
 	//Application main state, deafult enabled to false
 	private static boolean enabled = false;
 
-	private static boolean switchOffBTAfterCallEnded = false; 
+	private static boolean switchOffBTAfterCallEnded = true; 
 	
 	public static final String SWITCH_OFF_BT_AFTER_CALL_ENDED = "switchOffBTAfterCallEnded";
 	public static final String ENABLED = "enabled";
