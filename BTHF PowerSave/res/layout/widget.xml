@@ -5,6 +5,7 @@
 	android:layout_height="fill_parent"
 	android:minHeight="72dp"
 	android:minWidth="72dp"
+	android:gravity="center"
 	android:id="@+id/Base">
 
 	<ImageButton 
@@ -14,6 +15,7 @@
 		android:layout_height="wrap_content"
 		android:background="#00FFFFFF"
 		android:clickable="true"
+		android:gravity="center"
 		/>
 
 </LinearLayout>
