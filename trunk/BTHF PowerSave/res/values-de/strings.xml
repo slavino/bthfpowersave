@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="app_name">BTHF PowerSave</string>
+	<string name="save_config">Speichern</string>
+	<string name="toggleButton_YES">JA</string>
+	<string name="toggleButton_NO">NEIN</string>
+	<string name="keepBtOnAfterCallEnded">Soll das Bluetooth Modul ausgeschaltet werden nach Gesprich beendet ist?</string>
+	<string name="infoText">Besuchen Sie https://code.google.com/p/bthfpowersave/ f\u00fcr mehr Informationen \u00fcber diesen Produkt.</string>
+
+</resources>
