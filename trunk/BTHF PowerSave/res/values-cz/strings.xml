@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="app_name">BTHF PowerSave</string>
+	<string name="save_config">Uložit</string>
+	<string name="toggleButton_YES">ANO</string>
+	<string name="toggleButton_NO">NE</string>
+	<string name="keepBtOnAfterCallEnded">Vypnout bluetooth na telefonu po ukončení hovoru</string>
+	<string name="infoText">Navštívte https://code.google.com/p/bthfpowersave/ pro více informací o produktu.</string>
+
+</resources>
