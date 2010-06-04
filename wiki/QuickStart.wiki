@@ -1,4 +1,5 @@
 #summary Quick Start for widget setup
+#labels Featured
 
 = Introduction =
 
