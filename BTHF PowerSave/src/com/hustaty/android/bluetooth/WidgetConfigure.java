@@ -43,11 +43,15 @@ public class WidgetConfigure extends Activity {
 	    
 		WidgetConfigurationHolder.getInstance().loadPreferences(settings);
 		
-		//get toggle button stored value
-	    ToggleButton switchOffBTAfterCallEndedToggleButton = (ToggleButton) findViewById(R.id.SwitchOffBTAfterCallEndedToggleButton);
+		//get toggle button stored value - turn off after call ended
+	    ToggleButton switchOffBTAfterCallEndedToggleButton = (ToggleButton) findViewById(R.id.switchOffBTAfterCallEndedToggleButton);
 	    switchOffBTAfterCallEndedToggleButton.setChecked(WidgetConfigurationHolder.isSwitchOffBTAfterCallEnded());
 
-		if (extras != null) {
+		//get toggle button stored value - turn off after call ended
+	    ToggleButton processOutgoingCallsToggleButton = (ToggleButton) findViewById(R.id.processOutgoingCallsToggleButton);
+	    processOutgoingCallsToggleButton.setChecked(WidgetConfigurationHolder.isProcessOutgoingCalls());
+
+	    if (extras != null) {
 			appWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
 		}
 
@@ -80,8 +84,13 @@ public class WidgetConfigure extends Activity {
                     
                     SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
                     SharedPreferences.Editor editor = settings.edit();
-                    ToggleButton switchOffBTAfterCallEndedToggleButton = (ToggleButton) findViewById(R.id.SwitchOffBTAfterCallEndedToggleButton);
+
+                    ToggleButton switchOffBTAfterCallEndedToggleButton = (ToggleButton) findViewById(R.id.switchOffBTAfterCallEndedToggleButton);
                     editor.putBoolean(WidgetConfigurationHolder.SWITCH_OFF_BT_AFTER_CALL_ENDED, switchOffBTAfterCallEndedToggleButton.isChecked());
+
+                    ToggleButton processOutgoingCallsToggleButton = (ToggleButton) findViewById(R.id.processOutgoingCallsToggleButton);
+                    editor.putBoolean(WidgetConfigurationHolder.PROCESS_OUTGOING_CALLS, processOutgoingCallsToggleButton.isChecked());
+
                     editor.putBoolean(WidgetConfigurationHolder.ENABLED, WidgetConfigurationHolder.isEnabled());
 
                     // Commit the edits!

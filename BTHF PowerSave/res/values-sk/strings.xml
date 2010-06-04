@@ -6,6 +6,7 @@
 	<string name="toggleButton_YES">ÁNO</string>
 	<string name="toggleButton_NO">NIE</string>
 	<string name="keepBtOnAfterCallEnded">Vypnúť bluetooth na telefóne po skončení hovoru</string>
+	<string name="processAlsoOutgoingCalls">Spracovať aj odchádzajúce hovory</string>
 	<string name="infoText">Navštívte https://code.google.com/p/bthfpowersave/ pre viac informácií o tomto produkte.</string>
 
 </resources>

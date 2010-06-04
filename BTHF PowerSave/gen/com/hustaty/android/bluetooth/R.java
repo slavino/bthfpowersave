@@ -18,9 +18,10 @@ public final class R {
         public static final int unknown_state=0x7f020004;
     }
     public static final class id {
-        public static final int Base=0x7f060001;
-        public static final int SwitchOffBTAfterCallEndedToggleButton=0x7f060000;
-        public static final int imagebutton=0x7f060002;
+        public static final int Base=0x7f060002;
+        public static final int imagebutton=0x7f060003;
+        public static final int processOutgoingCallsToggleButton=0x7f060001;
+        public static final int switchOffBTAfterCallEndedToggleButton=0x7f060000;
     }
     public static final class layout {
         public static final int configure=0x7f030000;
@@ -28,8 +29,9 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f050000;
-        public static final int infoText=0x7f050005;
+        public static final int infoText=0x7f050006;
         public static final int keepBtOnAfterCallEnded=0x7f050004;
+        public static final int processAlsoOutgoingCalls=0x7f050005;
         public static final int save_config=0x7f050001;
         public static final int toggleButton_NO=0x7f050003;
         public static final int toggleButton_YES=0x7f050002;
