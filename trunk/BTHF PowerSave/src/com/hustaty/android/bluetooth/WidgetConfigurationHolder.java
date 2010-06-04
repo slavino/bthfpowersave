@@ -11,9 +11,14 @@ public class WidgetConfigurationHolder {
 	//Application main state, deafult enabled to false
 	private static boolean enabled = false;
 
-	private static boolean switchOffBTAfterCallEnded = true; 
+	//whether switch off BT after call ended
+	private static boolean switchOffBTAfterCallEnded = true;
+	
+	//whether process outgoing calls
+	private static boolean processOutgoingCalls = true; 
 	
 	public static final String SWITCH_OFF_BT_AFTER_CALL_ENDED = "switchOffBTAfterCallEnded";
+	public static final String PROCESS_OUTGOING_CALLS = "processOutgoingCalls";
 	public static final String ENABLED = "enabled";
 	
 	private static WidgetConfigurationHolder instance = new WidgetConfigurationHolder();
@@ -41,20 +46,28 @@ public class WidgetConfigurationHolder {
 		WidgetConfigurationHolder.switchOffBTAfterCallEnded = switchOffBTAfterCallEnded;
 	}
 
+	public static boolean isProcessOutgoingCalls() {
+		return processOutgoingCalls;
+	}
+
+	public static void setProcessOutgoingCalls(boolean processOutgoingCalls) {
+		WidgetConfigurationHolder.processOutgoingCalls = processOutgoingCalls;
+	}
+	
 	/**
 	 * load configuration from SharedPreferences
 	 * @param settings
 	 */
 	public void loadPreferences(SharedPreferences settings) {
-		
 		//get toggle button stored value
-		boolean switchOffBTAfterCallEnded = settings.getBoolean(WidgetConfigurationHolder.SWITCH_OFF_BT_AFTER_CALL_ENDED, true);
-	    WidgetConfigurationHolder.setSwitchOffBTAfterCallEnded(switchOffBTAfterCallEnded);
+		switchOffBTAfterCallEnded = settings.getBoolean(WidgetConfigurationHolder.SWITCH_OFF_BT_AFTER_CALL_ENDED, true);
 
-	    //global on/off
-	    boolean stateEnabled = settings.getBoolean(WidgetConfigurationHolder.ENABLED, false);
-	    WidgetConfigurationHolder.setEnabled(stateEnabled);
+	    //get toggle button stored value - process outgoing calls
+	    processOutgoingCalls = settings.getBoolean(WidgetConfigurationHolder.PROCESS_OUTGOING_CALLS, true);
 		
+	    //global on/off
+	    enabled = settings.getBoolean(WidgetConfigurationHolder.ENABLED, false);
+
 	    Log.d(LOG_TAG, "Loaded configuration from SheredPreferences: " + getInstance().toString());
 	}
 	
@@ -62,8 +75,9 @@ public class WidgetConfigurationHolder {
 	public String toString() {
 		StringBuilder sb= new StringBuilder();
 		sb.append("{" + ENABLED + ":" + enabled + "; ");
-		sb.append(SWITCH_OFF_BT_AFTER_CALL_ENDED + ":" + switchOffBTAfterCallEnded + ";}");
+		sb.append(SWITCH_OFF_BT_AFTER_CALL_ENDED + ":" + switchOffBTAfterCallEnded + "; ");
+		sb.append(PROCESS_OUTGOING_CALLS + ":" + processOutgoingCalls + ";}");
 		return sb.toString();
 	}
-	
+
 }

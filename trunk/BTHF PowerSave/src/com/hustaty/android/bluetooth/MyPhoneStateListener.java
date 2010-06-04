@@ -11,12 +11,12 @@ public class MyPhoneStateListener extends PhoneStateListener {
 	private final static String LOG_TAG = MyPhoneStateListener.class.getName();
 
 	private BluetoothAdapter bluetoothAdapter;
-
+	
 	@Override
 	public void onCallStateChanged(int state, String incomingNumber) {
 
 		bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-		
+				
 		if(bluetoothAdapter==null) {
 			Log.e(LOG_TAG, "BluetoothAdapter is not available.");
 		}
@@ -33,7 +33,7 @@ public class MyPhoneStateListener extends PhoneStateListener {
 					break;
 				case TelephonyManager.CALL_STATE_OFFHOOK:
 					stateString = "Off Hook";
-					if (!bluetoothAdapter.isEnabled()) {
+					if (!bluetoothAdapter.isEnabled() && WidgetConfigurationHolder.isProcessOutgoingCalls()) {
 						bluetoothAdapter.enable();
 					}
 					break;
@@ -41,6 +41,7 @@ public class MyPhoneStateListener extends PhoneStateListener {
 					stateString = "Ringing";
 					if (!bluetoothAdapter.isEnabled()) {
 						bluetoothAdapter.enable();
+						//connectToDevice();
 					}
 					break;
 			}
@@ -49,5 +50,5 @@ public class MyPhoneStateListener extends PhoneStateListener {
 
 		super.onCallStateChanged(state, incomingNumber);
 	}
-
+	
 }
