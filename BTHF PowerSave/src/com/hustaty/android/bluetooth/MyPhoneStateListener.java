@@ -14,11 +14,13 @@ import android.util.Log;
 
 public class MyPhoneStateListener extends PhoneStateListener {
 
+	//well known UUID :)
 	private static final String BT_SERVICE_UUID = "00001101-0000-1000-8000-00805F9B34FB";
 	
 	// logger entry
 	private final static String LOG_TAG = MyPhoneStateListener.class.getName();
 
+	//reference to Bluetooth Adapter
 	private BluetoothAdapter bluetoothAdapter;
 	
 	@Override
@@ -42,7 +44,9 @@ public class MyPhoneStateListener extends PhoneStateListener {
 					break;
 				case TelephonyManager.CALL_STATE_OFFHOOK:
 					stateString = "Off Hook";
-					if (!bluetoothAdapter.isEnabled() && WidgetConfigurationHolder.isProcessOutgoingCalls()) {
+					if (!bluetoothAdapter.isEnabled() 
+							&& WidgetConfigurationHolder.isProcessOutgoingCalls()
+							&& isOutgoingCall(incomingNumber)) {
 						bluetoothAdapter.enable();
 					}
 					break;
@@ -50,15 +54,18 @@ public class MyPhoneStateListener extends PhoneStateListener {
 					stateString = "Ringing";
 					if (!bluetoothAdapter.isEnabled()) {
 						bluetoothAdapter.enable();
-						//FIXME small hack - to ensure phone's BT module is already active  
-						waitNMillis(1200);
+						try {  
+							waitUntilBluetoothAdapterIsInState(BluetoothAdapter.STATE_ON);
+						} catch (Exception e) {
+							Log.e(LOG_TAG, e.getMessage());
+						}
 						connectToDevice();
 					}
 					break;
 			}
 			Log.d(LOG_TAG, String.format("\nonCallStateChanged: %s , %s", stateString, incomingNumber));
 		} 
-
+		Log.d(LOG_TAG, "Incoming call from:" + incomingNumber);
 		super.onCallStateChanged(state, incomingNumber);
 	}
 	
@@ -91,15 +98,53 @@ public class MyPhoneStateListener extends PhoneStateListener {
 			}
 		}
 	}
+
+	/**
+	 * waits until BluetoothAdapter is in required state 
+	 * @param state
+	 * @throws Exception
+	 */
+	private void waitUntilBluetoothAdapterIsInState(int state) throws Exception {
+		switch(state) {
+			case BluetoothAdapter.STATE_OFF:
+				if(bluetoothAdapter.getState() == BluetoothAdapter.STATE_TURNING_OFF) {
+					waitUntilBluetoothAdapterIsInState(BluetoothAdapter.STATE_OFF);
+				} else if(bluetoothAdapter.getState() == BluetoothAdapter.STATE_OFF) {
+					Log.d(LOG_TAG, "BluetoothAdapter is in state OFF");
+					return;
+				} else {
+					//ensure we're not waiting for Godot ;)
+					bluetoothAdapter.disable();
+					waitUntilBluetoothAdapterIsInState(BluetoothAdapter.STATE_OFF);
+				}
+				break;
+			case BluetoothAdapter.STATE_ON:
+				if(bluetoothAdapter.getState() == BluetoothAdapter.STATE_TURNING_ON) {
+					waitUntilBluetoothAdapterIsInState(BluetoothAdapter.STATE_ON);
+				} else if(bluetoothAdapter.getState() == BluetoothAdapter.STATE_ON) {
+					Log.d(LOG_TAG, "BluetoothAdapter is in state ON");
+					return;
+				} else {
+					//ensure we're not waiting for Godot ;)
+					bluetoothAdapter.enable();
+					waitUntilBluetoothAdapterIsInState(BluetoothAdapter.STATE_ON);
+				}
+				break;
+			default: 
+				throw new Exception("You can check only final states of BluetoothAdapter(STATE_ON|STATE_OFF).");
+		}
+	}
 	
 	/**
-	 * to create Lag 
-	 * needs to be fixed
-	 * @param n
+	 * method to check whether call is outgoing - based on incomingNumber information
+	 * @param incomingNumber
+	 * @return
 	 */
-	private void waitNMillis(long n) {
-		long t = System.currentTimeMillis();
-		while(n > System.currentTimeMillis() - t) {
+	private boolean isOutgoingCall(String incomingNumber) {
+		if("".equals(incomingNumber) || incomingNumber==null) {
+			return true;
 		}
+		//FIXME what if anonymous call is being processed? CLIR - needs to be tested on real device -> Answer: TelephonyManager.CALL_STATE_RINGING might do the stuff
+		return false;
 	}
 }
