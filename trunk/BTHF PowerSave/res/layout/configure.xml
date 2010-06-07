@@ -22,8 +22,14 @@
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="wrap_content" 
 					android:text="@string/keepBtOnAfterCallEnded"
+					android:paddingLeft="5sp"
 					android:textSize="15sp" />
 		</LinearLayout> 
+		<LinearLayout 
+			android:layout_width="fill_parent" 
+			android:layout_height="10px"
+			android:orientation="horizontal">
+		</LinearLayout>
 		<LinearLayout 
 			android:layout_width="fill_parent" 
 			android:layout_height="wrap_content"
@@ -38,6 +44,7 @@
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="wrap_content" 
 					android:text="@string/processAlsoOutgoingCalls"
+					android:paddingLeft="5sp"
 					android:textSize="15sp" />
 		</LinearLayout> 
 		<TextView 
@@ -47,6 +54,7 @@
 			android:orientation="horizontal"
 	  		android:gravity="center"
 	  		android:textSize="12dp"
+	  		android:linksClickable="true"
 	  		android:layout_marginTop="50dp"/>
 	</LinearLayout>
 </LinearLayout>
