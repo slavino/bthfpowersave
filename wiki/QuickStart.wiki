@@ -17,3 +17,10 @@ Select one of the options and press "Menu" button to display options menu with "
 = Details =
 
 Configuration is stored in shared preferences mode and is loaded each time the device is booted.
+
+= Translations = 
+Currently there are available translations for 
+  * English
+  * German
+  * Slovak
+  * Czech
