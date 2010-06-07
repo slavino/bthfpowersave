@@ -42,6 +42,7 @@ public class WidgetProvider extends AppWidgetProvider {
 
 	@Override
 	public void onDeleted(Context context, int[] appWidgetIds) {
+		WidgetConfigurationHolder.setEnabled(false);
 		super.onDeleted(context, appWidgetIds);
 	}
 
