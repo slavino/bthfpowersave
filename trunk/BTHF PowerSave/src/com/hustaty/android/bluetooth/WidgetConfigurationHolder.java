@@ -1,5 +1,7 @@
 package com.hustaty.android.bluetooth;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
@@ -8,72 +10,127 @@ public class WidgetConfigurationHolder {
 	//logging support
 	private static final String LOG_TAG = WidgetConfigurationHolder.class.getName();
 	
-	//Application main state, deafult enabled to false
-	private static boolean enabled = false;
+	//Application main state
+	private Boolean enabled;
 
 	//whether switch off BT after call ended
-	private static boolean switchOffBTAfterCallEnded = true;
+	private Boolean switchOffBTAfterCallEnded;
 	
 	//whether process outgoing calls
-	private static boolean processOutgoingCalls = true; 
+	private Boolean processOutgoingCalls; 
 	
 	public static final String SWITCH_OFF_BT_AFTER_CALL_ENDED = "switchOffBTAfterCallEnded";
 	public static final String PROCESS_OUTGOING_CALLS = "processOutgoingCalls";
 	public static final String ENABLED = "enabled";
 	
-	private static WidgetConfigurationHolder instance = new WidgetConfigurationHolder();
+	//application configuration instance
+	private static WidgetConfigurationHolder instance;
 	
 	private WidgetConfigurationHolder() {
+		this.enabled = false;
+		this.switchOffBTAfterCallEnded = true;
+		this.processOutgoingCalls = true;
 	}
 	
+	/**
+	 * returning instance
+	 * @return
+	 */
 	public static WidgetConfigurationHolder getInstance() {
+		if(instance == null) {
+			instance = new WidgetConfigurationHolder();
+		}
 		return instance;
 	}
 	
-	public static boolean isEnabled() {
-		return enabled;
+	/**
+	 * getter of enabled - application state
+	 * @return
+	 */
+	public Boolean isEnabled() {
+		return this.enabled;
 	}
 
-	public static void setEnabled(boolean enabled) {
-		WidgetConfigurationHolder.enabled = enabled;
+	/**
+	 * setter of enabled - holding state of entire application
+	 * @param enabled
+	 */
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 	}
 	
-	public static boolean isSwitchOffBTAfterCallEnded() {
-		return switchOffBTAfterCallEnded;
+	public void setEnabled(Context context, Boolean enabled) {
+		setEnabled(enabled);
+		this.storePreference(context, ENABLED, enabled);
+	}
+	
+	public Boolean isSwitchOffBTAfterCallEnded() {
+		return instance.switchOffBTAfterCallEnded;
 	}
 
-	public static void setSwitchOffBTAfterCallEnded(boolean switchOffBTAfterCallEnded) {
-		WidgetConfigurationHolder.switchOffBTAfterCallEnded = switchOffBTAfterCallEnded;
+	public void setSwitchOffBTAfterCallEnded(Boolean switchOffBTAfterCallEnded) {
+		this.switchOffBTAfterCallEnded = switchOffBTAfterCallEnded;
 	}
 
-	public static boolean isProcessOutgoingCalls() {
-		return processOutgoingCalls;
+	public Boolean isProcessOutgoingCalls() {
+		return this.processOutgoingCalls;
 	}
 
-	public static void setProcessOutgoingCalls(boolean processOutgoingCalls) {
-		WidgetConfigurationHolder.processOutgoingCalls = processOutgoingCalls;
+	public void setProcessOutgoingCalls(Boolean processOutgoingCalls) {
+		this.processOutgoingCalls = processOutgoingCalls;
 	}
 	
 	/**
 	 * load configuration from SharedPreferences
 	 * @param settings
 	 */
-	public void loadPreferences(SharedPreferences settings) {
+	public static void loadPreferences(SharedPreferences settings) {
+		
 		//get toggle button stored value
-		switchOffBTAfterCallEnded = settings.getBoolean(WidgetConfigurationHolder.SWITCH_OFF_BT_AFTER_CALL_ENDED, true);
+		getInstance()
+				.setSwitchOffBTAfterCallEnded(
+						settings
+								.getBoolean(
+										WidgetConfigurationHolder.SWITCH_OFF_BT_AFTER_CALL_ENDED,
+										Boolean.TRUE));
 
 	    //get toggle button stored value - process outgoing calls
-	    processOutgoingCalls = settings.getBoolean(WidgetConfigurationHolder.PROCESS_OUTGOING_CALLS, true);
+		getInstance().setProcessOutgoingCalls(
+				settings.getBoolean(
+						WidgetConfigurationHolder.PROCESS_OUTGOING_CALLS,
+						Boolean.TRUE));
 		
 	    //global on/off
-	    enabled = settings.getBoolean(WidgetConfigurationHolder.ENABLED, false);
+		getInstance().setEnabled(
+				settings.getBoolean(WidgetConfigurationHolder.ENABLED,
+						Boolean.FALSE));
 
 	    Log.d(LOG_TAG, "Loaded configuration from SharedPreferences: " + getInstance().toString());
 	}
 	
+	/**
+	 * auto store values
+	 * @param context
+	 * @param name
+	 * @param value
+	 */
+	private void storePreference(Context context, String name, Object value) {
+		if(context != null) {
+			SharedPreferences settings = context.getSharedPreferences(WidgetConfigure.PREFS_NAME, Activity.MODE_PRIVATE);
+            SharedPreferences.Editor editor = settings.edit();
+			if(value instanceof Boolean) {
+	            editor.putBoolean(name, (Boolean)value);
+			}
+            editor.commit();
+		}
+	}
+	
+	/**
+	 * overriding toString method
+	 */
 	@Override
 	public String toString() {
-		StringBuilder sb= new StringBuilder();
+		StringBuilder sb = new StringBuilder();
 		sb.append("{" + ENABLED + ":" + enabled + "; ");
 		sb.append(SWITCH_OFF_BT_AFTER_CALL_ENDED + ":" + switchOffBTAfterCallEnded + "; ");
 		sb.append(PROCESS_OUTGOING_CALLS + ":" + processOutgoingCalls + ";}");
