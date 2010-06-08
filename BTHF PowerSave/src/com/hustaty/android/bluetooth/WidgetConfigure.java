@@ -45,11 +45,11 @@ public class WidgetConfigure extends Activity {
 		
 		//get toggle button stored value - turn off after call ended
 	    ToggleButton switchOffBTAfterCallEndedToggleButton = (ToggleButton) findViewById(R.id.switchOffBTAfterCallEndedToggleButton);
-	    switchOffBTAfterCallEndedToggleButton.setChecked(WidgetConfigurationHolder.isSwitchOffBTAfterCallEnded());
+	    switchOffBTAfterCallEndedToggleButton.setChecked(WidgetConfigurationHolder.getInstance().isSwitchOffBTAfterCallEnded());
 
 		//get toggle button stored value - turn off after call ended
 	    ToggleButton processOutgoingCallsToggleButton = (ToggleButton) findViewById(R.id.processOutgoingCallsToggleButton);
-	    processOutgoingCallsToggleButton.setChecked(WidgetConfigurationHolder.isProcessOutgoingCalls());
+	    processOutgoingCallsToggleButton.setChecked(WidgetConfigurationHolder.getInstance().isProcessOutgoingCalls());
 
 	    if (extras != null) {
 			appWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
@@ -91,7 +91,7 @@ public class WidgetConfigure extends Activity {
                     ToggleButton processOutgoingCallsToggleButton = (ToggleButton) findViewById(R.id.processOutgoingCallsToggleButton);
                     editor.putBoolean(WidgetConfigurationHolder.PROCESS_OUTGOING_CALLS, processOutgoingCallsToggleButton.isChecked());
 
-                    editor.putBoolean(WidgetConfigurationHolder.ENABLED, WidgetConfigurationHolder.isEnabled());
+                    editor.putBoolean(WidgetConfigurationHolder.ENABLED, WidgetConfigurationHolder.getInstance().isEnabled());
 
                     // Commit the edits!
                     editor.commit();

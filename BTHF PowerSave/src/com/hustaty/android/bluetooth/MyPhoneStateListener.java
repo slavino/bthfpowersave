@@ -34,18 +34,18 @@ public class MyPhoneStateListener extends PhoneStateListener {
 		
 		String stateString = "N/A";
 
-		if(WidgetConfigurationHolder.isEnabled() && bluetoothAdapter!=null) {
+		if(WidgetConfigurationHolder.getInstance().isEnabled() && bluetoothAdapter!=null) {
 			switch (state) {
 				case TelephonyManager.CALL_STATE_IDLE:
 					stateString = "Idle";
-					if(WidgetConfigurationHolder.isSwitchOffBTAfterCallEnded()) {
+					if(WidgetConfigurationHolder.getInstance().isSwitchOffBTAfterCallEnded()) {
 						bluetoothAdapter.disable();
 					}
 					break;
 				case TelephonyManager.CALL_STATE_OFFHOOK:
 					stateString = "Off Hook";
 					if (!bluetoothAdapter.isEnabled() 
-							&& WidgetConfigurationHolder.isProcessOutgoingCalls()
+							&& WidgetConfigurationHolder.getInstance().isProcessOutgoingCalls()
 							&& isOutgoingCall(incomingNumber)) {
 						bluetoothAdapter.enable();
 					}

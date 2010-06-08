@@ -10,11 +10,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 
 public class WidgetProvider extends AppWidgetProvider {
-
-	//URI scheme
-	public static final String URI_SCHEME = "betterautoBT_widget";
 
 	//logging support
 	public static final String LOG_TAG = WidgetProvider.class.getName();
@@ -28,7 +26,11 @@ public class WidgetProvider extends AppWidgetProvider {
 
 		Intent clickIntent = new Intent(WidgetConfigure.WIDGET_CLICK);
 		
-		if (WidgetConfigurationHolder.isEnabled()) {
+		WidgetConfigurationHolder.loadPreferences(
+				context.getSharedPreferences(WidgetConfigure.PREFS_NAME,
+						Activity.MODE_PRIVATE));
+
+		if (WidgetConfigurationHolder.getInstance().isEnabled()) {
 			updateView.setImageViewResource(R.id.imagebutton, R.drawable.on);
 		} else {
 			updateView.setImageViewResource(R.id.imagebutton, R.drawable.off);			
@@ -40,9 +42,19 @@ public class WidgetProvider extends AppWidgetProvider {
 		super.onUpdate(context, appWidgetManager, appWidgetIds);
 	}
 
+	/**
+	 * on deleting widget from home screen
+	 */
 	@Override
 	public void onDeleted(Context context, int[] appWidgetIds) {
-		WidgetConfigurationHolder.setEnabled(false);
+		
+		//notify user we're switching functionality off
+		Toast.makeText(context, R.string.toastTextAfterDeletingWidget, Toast.LENGTH_LONG).show();
+		
+		//set SharedPreferences main application state to FALSE
+		WidgetConfigurationHolder.getInstance().setEnabled(context, Boolean.FALSE);
+		
+		Log.d(LOG_TAG, "Stroring values:" + WidgetConfigurationHolder.getInstance().toString());
 		super.onDeleted(context, appWidgetIds);
 	}
 
@@ -63,7 +75,7 @@ public class WidgetProvider extends AppWidgetProvider {
 		ComponentName thisWidget = new ComponentName(context, WidgetProvider.class);
 		
 		if (intent.getAction().equals(WidgetConfigure.WIDGET_CLICK)) {
-			if (WidgetConfigurationHolder.isEnabled()) {
+			if (WidgetConfigurationHolder.getInstance().isEnabled()) {
 				updateView.setImageViewResource(R.id.imagebutton, R.drawable.off);
 			} else {
 				updateView.setImageViewResource(R.id.imagebutton, R.drawable.on);
@@ -73,12 +85,12 @@ public class WidgetProvider extends AppWidgetProvider {
 			AppWidgetManager.getInstance(context).updateAppWidget(thisWidget, updateView);
 			
 			// toggle state
-			WidgetConfigurationHolder.setEnabled(!WidgetConfigurationHolder.isEnabled());
+			WidgetConfigurationHolder.getInstance().setEnabled(!WidgetConfigurationHolder.getInstance().isEnabled());
 			
 			//store settings
 			SharedPreferences settings = context.getSharedPreferences(WidgetConfigure.PREFS_NAME, Activity.MODE_PRIVATE);
             SharedPreferences.Editor editor = settings.edit();
-            editor.putBoolean(WidgetConfigurationHolder.ENABLED, WidgetConfigurationHolder.isEnabled());
+            editor.putBoolean(WidgetConfigurationHolder.ENABLED, WidgetConfigurationHolder.getInstance().isEnabled());
             editor.commit();
             
             Log.d(LOG_TAG, "Stroring values:" + WidgetConfigurationHolder.getInstance().toString());
