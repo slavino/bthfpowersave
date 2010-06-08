@@ -68,7 +68,7 @@ public class WidgetConfigurationHolder {
 	    //global on/off
 	    enabled = settings.getBoolean(WidgetConfigurationHolder.ENABLED, false);
 
-	    Log.d(LOG_TAG, "Loaded configuration from SheredPreferences: " + getInstance().toString());
+	    Log.d(LOG_TAG, "Loaded configuration from SharedPreferences: " + getInstance().toString());
 	}
 	
 	@Override

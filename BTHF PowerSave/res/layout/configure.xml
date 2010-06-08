@@ -27,7 +27,7 @@
 		</LinearLayout> 
 		<LinearLayout 
 			android:layout_width="fill_parent" 
-			android:layout_height="10px"
+			android:layout_height="15px"
 			android:orientation="horizontal">
 		</LinearLayout>
 		<LinearLayout 
@@ -53,6 +53,7 @@
 			android:text="@string/infoText"
 			android:orientation="horizontal"
 	  		android:gravity="center"
+	  		android:autoLink="web"
 	  		android:textSize="12dp"
 	  		android:linksClickable="true"
 	  		android:layout_marginTop="50dp"/>
