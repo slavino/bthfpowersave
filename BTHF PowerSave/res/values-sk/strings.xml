@@ -8,5 +8,6 @@
 	<string name="keepBtOnAfterCallEnded">Vypnúť bluetooth na telefóne po skončení hovoru</string>
 	<string name="processAlsoOutgoingCalls">Spracovať aj odchádzajúce hovory</string>
 	<string name="infoText">Navštívte https://code.google.com/p/bthfpowersave pre viac informácií o tomto produkte.</string>
+	<string name="toastTextAfterDeletingWidget">BTHF PowerSave bol vypnutý</string>
 
 </resources>
