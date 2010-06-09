@@ -28,7 +28,7 @@ public class MyPhoneStateListener extends PhoneStateListener {
 
 		bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 				
-		if(bluetoothAdapter==null) {
+		if(bluetoothAdapter == null) {
 			Log.e(LOG_TAG, "BluetoothAdapter is not available.");
 		}
 		
@@ -108,6 +108,7 @@ public class MyPhoneStateListener extends PhoneStateListener {
 		switch(state) {
 			case BluetoothAdapter.STATE_OFF:
 				if(bluetoothAdapter.getState() == BluetoothAdapter.STATE_TURNING_OFF) {
+					waitNMillis(200);
 					waitUntilBluetoothAdapterIsInState(BluetoothAdapter.STATE_OFF);
 				} else if(bluetoothAdapter.getState() == BluetoothAdapter.STATE_OFF) {
 					Log.d(LOG_TAG, "BluetoothAdapter is in state OFF");
@@ -120,6 +121,7 @@ public class MyPhoneStateListener extends PhoneStateListener {
 				break;
 			case BluetoothAdapter.STATE_ON:
 				if(bluetoothAdapter.getState() == BluetoothAdapter.STATE_TURNING_ON) {
+					waitNMillis(200);
 					waitUntilBluetoothAdapterIsInState(BluetoothAdapter.STATE_ON);
 				} else if(bluetoothAdapter.getState() == BluetoothAdapter.STATE_ON) {
 					Log.d(LOG_TAG, "BluetoothAdapter is in state ON");
@@ -133,6 +135,15 @@ public class MyPhoneStateListener extends PhoneStateListener {
 			default: 
 				throw new Exception("You can check only final states of BluetoothAdapter(STATE_ON|STATE_OFF).");
 		}
+	}
+	
+	/**
+	 * delay N milliseconds
+	 * @param n
+	 */
+	private void waitNMillis(long n) {
+		long t = System.currentTimeMillis();
+		while(n > System.currentTimeMillis() - t){}
 	}
 	
 	/**
