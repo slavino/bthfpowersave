@@ -33,6 +33,7 @@ public final class R {
         public static final int keepBtOnAfterCallEnded=0x7f050004;
         public static final int processAlsoOutgoingCalls=0x7f050005;
         public static final int save_config=0x7f050001;
+        public static final int toastTextAfterDeletingWidget=0x7f050007;
         public static final int toggleButton_NO=0x7f050003;
         public static final int toggleButton_YES=0x7f050002;
     }
