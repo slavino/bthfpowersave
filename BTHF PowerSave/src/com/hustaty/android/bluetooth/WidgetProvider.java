@@ -84,15 +84,9 @@ public class WidgetProvider extends AppWidgetProvider {
 			//get Appwidget manager and change widget image
 			AppWidgetManager.getInstance(context).updateAppWidget(thisWidget, updateView);
 			
-			// toggle state
-			WidgetConfigurationHolder.getInstance().setEnabled(!WidgetConfigurationHolder.getInstance().isEnabled());
-			
-			//store settings
-			SharedPreferences settings = context.getSharedPreferences(WidgetConfigure.PREFS_NAME, Activity.MODE_PRIVATE);
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putBoolean(WidgetConfigurationHolder.ENABLED, WidgetConfigurationHolder.getInstance().isEnabled());
-            editor.commit();
-            
+			// toggle state and store settings
+			WidgetConfigurationHolder.getInstance().setEnabled(context, !WidgetConfigurationHolder.getInstance().isEnabled());
+			           
             Log.d(LOG_TAG, "Stroring values:" + WidgetConfigurationHolder.getInstance().toString());
 		}
 	}

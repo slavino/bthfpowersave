@@ -19,7 +19,7 @@ public class WidgetReceiver extends BroadcastReceiver {
 		
 		//load SharedPreferences on receiving specific actions
 		SharedPreferences settings = context.getSharedPreferences(WidgetConfigure.PREFS_NAME, Activity.MODE_PRIVATE);
-		WidgetConfigurationHolder.getInstance().loadPreferences(settings);
+		WidgetConfigurationHolder.loadPreferences(settings);
 		
 		TelephonyManager telephonyManager = (TelephonyManager) context.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
 		
