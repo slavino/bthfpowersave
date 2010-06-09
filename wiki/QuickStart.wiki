@@ -9,10 +9,10 @@ Widget reacts on single click by tapping on it's icon on home screen.
 
 _Use Android Market for installation because automated update support._
 After successful installation place a widget on the home screen.
-Single time Configuration will appear and ask you for BT state behaviour after call ended.
-Select one of the options and press "Menu" button to display options menu with "Save" option.
+Single time Configuration will appear and ask you for BT state behaviour after call ended and whether it should process also outgoing calls.
+Setup the options and press "Menu" button to display options menu with "Save" option.
 
-*Changing BT behaviour* requires placing new widget on home screen where again will single time configuration appear. You can delete the additional widget afterwards.
+Changing *BTHF PowerSave* behaviour requires placing new widget on home screen where again will appear single time configuration. You can delete the additional widget afterwards.
 
 = Details =
 
