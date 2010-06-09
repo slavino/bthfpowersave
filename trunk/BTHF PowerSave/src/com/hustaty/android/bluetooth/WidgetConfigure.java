@@ -41,7 +41,7 @@ public class WidgetConfigure extends Activity {
 
 		SharedPreferences settings = getSharedPreferences(WidgetConfigure.PREFS_NAME, MODE_PRIVATE);
 	    
-		WidgetConfigurationHolder.getInstance().loadPreferences(settings);
+		WidgetConfigurationHolder.loadPreferences(settings);
 		
 		//get toggle button stored value - turn off after call ended
 	    ToggleButton switchOffBTAfterCallEndedToggleButton = (ToggleButton) findViewById(R.id.switchOffBTAfterCallEndedToggleButton);
