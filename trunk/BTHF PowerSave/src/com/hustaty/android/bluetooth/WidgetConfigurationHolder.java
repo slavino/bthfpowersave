@@ -8,7 +8,7 @@ import android.util.Log;
 public class WidgetConfigurationHolder {
 
 	//logging support
-	private static final String LOG_TAG = WidgetConfigurationHolder.class.getName();
+	private static final String LOG_TAG = WidgetConfigurationHolder.class.getSimpleName();
 	
 	//Application main state
 	private Boolean enabled;

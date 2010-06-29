@@ -13,7 +13,7 @@ import android.widget.ToggleButton;
 public class WidgetConfigure extends Activity {
 
 	//logging tag
-	private static final String LOG_TAG = WidgetConfigure.class.getName();
+	private static final String LOG_TAG = WidgetConfigure.class.getSimpleName();
 
 	//preferences name
 	public static final String PREFS_NAME = "BTHFPreferencesFile";
@@ -80,7 +80,10 @@ public class WidgetConfigure extends Activity {
                     Intent resultValue = new Intent();
                     resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
                     setResult(RESULT_OK, resultValue);
-                    Log.d(LOG_TAG, "Saving configuration." + WidgetConfigurationHolder.getInstance().toString());
+                    
+                    if(Log.isLoggable(LOG_TAG, Log.DEBUG)) {
+                    	Log.d(LOG_TAG, "Saving configuration." + WidgetConfigurationHolder.getInstance().toString());
+                    }
                     
                     SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
                     SharedPreferences.Editor editor = settings.edit();

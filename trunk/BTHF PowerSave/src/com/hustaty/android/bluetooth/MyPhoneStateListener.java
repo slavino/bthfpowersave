@@ -8,7 +8,7 @@ import android.util.Log;
 public class MyPhoneStateListener extends PhoneStateListener {
 
 	// logger entry
-	private final static String LOG_TAG = MyPhoneStateListener.class.getName();
+	private final static String LOG_TAG = MyPhoneStateListener.class.getSimpleName();
 
 	//reference to Bluetooth Adapter
 	private BluetoothAdapter bluetoothAdapter;
@@ -19,7 +19,9 @@ public class MyPhoneStateListener extends PhoneStateListener {
 		bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 				
 		if(bluetoothAdapter == null) {
-			Log.e(LOG_TAG, "BluetoothAdapter is not available.");
+			if(Log.isLoggable(LOG_TAG, Log.ERROR)) {
+				Log.e(LOG_TAG, "BluetoothAdapter is not available.");
+			}
 		}
 		
 		String stateString = "N/A";
@@ -47,9 +49,17 @@ public class MyPhoneStateListener extends PhoneStateListener {
 					}
 					break;
 			}
-			Log.d(LOG_TAG, String.format("\nonCallStateChanged: %s , %s", stateString, incomingNumber));
-		} 
-		Log.d(LOG_TAG, "Incoming call from:" + incomingNumber);
+
+			if(Log.isLoggable(LOG_TAG, Log.DEBUG)) {
+				Log.d(LOG_TAG, String.format("\nonCallStateChanged: %s , %s", stateString, incomingNumber));
+			}
+			
+		}
+		
+		if(Log.isLoggable(LOG_TAG, Log.DEBUG)) {
+			Log.d(LOG_TAG, "Incoming call from:" + incomingNumber);
+		}
+		
 		super.onCallStateChanged(state, incomingNumber);
 	}
 	
