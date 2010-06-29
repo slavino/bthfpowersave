@@ -14,7 +14,7 @@ import android.widget.Toast;
 public class WidgetProvider extends AppWidgetProvider {
 
 	//logging support
-	public static final String LOG_TAG = WidgetProvider.class.getName();
+	public static final String LOG_TAG = WidgetProvider.class.getSimpleName();
 
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
@@ -53,7 +53,10 @@ public class WidgetProvider extends AppWidgetProvider {
 		//set SharedPreferences main application state to FALSE
 		WidgetConfigurationHolder.getInstance().setEnabled(context, Boolean.FALSE);
 		
-		Log.d(LOG_TAG, "Stroring values:" + WidgetConfigurationHolder.getInstance().toString());
+		if(Log.isLoggable(LOG_TAG, Log.DEBUG)) {
+			Log.d(LOG_TAG, "Stroring values:" + WidgetConfigurationHolder.getInstance().toString());
+		}
+		
 		super.onDeleted(context, appWidgetIds);
 	}
 
@@ -86,7 +89,9 @@ public class WidgetProvider extends AppWidgetProvider {
 			// toggle state and store settings
 			WidgetConfigurationHolder.getInstance().setEnabled(context, !WidgetConfigurationHolder.getInstance().isEnabled());
 			           
-            Log.d(LOG_TAG, "Stroring values:" + WidgetConfigurationHolder.getInstance().toString());
+			if(Log.isLoggable(LOG_TAG, Log.DEBUG)) {
+				Log.d(LOG_TAG, "Storing values:" + WidgetConfigurationHolder.getInstance().toString());
+			}
 		}
 	}
 

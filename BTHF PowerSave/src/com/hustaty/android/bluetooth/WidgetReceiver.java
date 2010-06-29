@@ -11,7 +11,7 @@ import android.util.Log;
 
 public class WidgetReceiver extends BroadcastReceiver {
 
-	private static final String LOG_TAG = WidgetReceiver.class.getName();
+	private static final String LOG_TAG = WidgetReceiver.class.getSimpleName();
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {
