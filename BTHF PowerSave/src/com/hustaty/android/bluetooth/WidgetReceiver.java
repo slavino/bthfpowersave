@@ -24,6 +24,7 @@ public class WidgetReceiver extends BroadcastReceiver {
 		TelephonyManager telephonyManager = (TelephonyManager) context.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
 		
 		//listen to CALL_STATE changes
+		Log.d(LOG_TAG, "#onReceive(): registering MyPhoneStateListener");
 		telephonyManager.listen(new MyPhoneStateListener(), PhoneStateListener.LISTEN_CALL_STATE);
 		
 	}
