@@ -23,6 +23,12 @@ public class MyPhoneStateListener extends PhoneStateListener {
 	//reference to Bluetooth Adapter
 	private BluetoothAdapter bluetoothAdapter;
 	
+	private final NotificationService service;
+
+	public MyPhoneStateListener(NotificationService context) {
+		this.service = context;
+	}
+
 	@Override
 	public void onCallStateChanged(int state, String incomingNumber) {
 
@@ -57,12 +63,12 @@ public class MyPhoneStateListener extends PhoneStateListener {
 					if (!bluetoothAdapter.isEnabled()) {
 						bluetoothAdapter.enable();
 					}
-					try {  
-                        waitUntilBluetoothAdapterIsInState(BluetoothAdapter.STATE_ON);
-	                } catch (Exception e) {
-                        Log.e(LOG_TAG, e.getMessage());
-	                }
-	                connectToDevice();
+//					try {  
+//                        waitUntilBluetoothAdapterIsInState(BluetoothAdapter.STATE_ON);
+//	                } catch (Exception e) {
+//                        Log.e(LOG_TAG, e.getMessage());
+//	                }
+	                //connectToDevice();
 
 					break;
 			}

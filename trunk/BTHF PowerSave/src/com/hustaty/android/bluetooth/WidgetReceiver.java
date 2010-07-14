@@ -25,7 +25,10 @@ public class WidgetReceiver extends BroadcastReceiver {
 		
 		//listen to CALL_STATE changes
 		Log.d(LOG_TAG, "#onReceive(): registering MyPhoneStateListener");
-		telephonyManager.listen(new MyPhoneStateListener(), PhoneStateListener.LISTEN_CALL_STATE);
+		if(!NotificationService.isRunning(context)) {
+			NotificationService.start(context);
+		}
+		//telephonyManager.listen(new MyPhoneStateListener(), PhoneStateListener.LISTEN_CALL_STATE);
 		
 	}
 
