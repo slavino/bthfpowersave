@@ -31,8 +31,14 @@ public class WidgetProvider extends AppWidgetProvider {
 
 		if (WidgetConfigurationHolder.getInstance().isEnabled()) {
 			updateView.setImageViewResource(R.id.imagebutton, R.drawable.on);
+			if(!NotificationService.isRunning(context)) {
+				NotificationService.start(context);
+			}
 		} else {
-			updateView.setImageViewResource(R.id.imagebutton, R.drawable.off);			
+			updateView.setImageViewResource(R.id.imagebutton, R.drawable.off);
+			if(NotificationService.isRunning(context)) {
+				NotificationService.stop(context);
+			}
 		}
 		
 		PendingIntent pendingIntentClick = PendingIntent.getBroadcast(context, 0, clickIntent, 0);
@@ -52,7 +58,11 @@ public class WidgetProvider extends AppWidgetProvider {
 		
 		//set SharedPreferences main application state to FALSE
 		WidgetConfigurationHolder.getInstance().setEnabled(context, Boolean.FALSE);
-		
+
+		if(NotificationService.isRunning(context)) {
+			NotificationService.stop(context);
+		}
+
 		if(Log.isLoggable(LOG_TAG, Log.DEBUG)) {
 			Log.d(LOG_TAG, "Stroring values:" + WidgetConfigurationHolder.getInstance().toString());
 		}

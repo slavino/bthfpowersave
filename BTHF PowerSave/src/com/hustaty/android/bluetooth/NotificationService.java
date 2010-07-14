@@ -34,7 +34,7 @@ public class NotificationService extends Service {
 
 		Log.i(LOG_TAG, "Starting notification service");
 		instanceHandler = new Handler();
-
+		
 
 		final TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
 
@@ -62,10 +62,12 @@ public class NotificationService extends Service {
 
 	public static void start(Context context) {
 		context.startService(new Intent(context, NotificationService.class));
+		Log.i(LOG_TAG, "Sending intent to start notification service");
 	}
 
 	public static void stop(Context context) {
 		context.stopService(new Intent(context, NotificationService.class));
+		Log.i(LOG_TAG, "Sending intent to stop notification service");
 	}
 
 }
