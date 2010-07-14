@@ -2,6 +2,7 @@
 <resources>
     
     <string name="app_name">BTHF PowerSave</string>
+    <string name="service_name">BTHF PowerSave Service</string>
 	<string name="save_config">Uložiť</string>
 	<string name="toggleButton_YES">ÁNO</string>
 	<string name="toggleButton_NO">NIE</string>
