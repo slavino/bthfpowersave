@@ -6,7 +6,10 @@
 	<string name="save_config">Speichern</string>
 	<string name="toggleButton_YES">JA</string>
 	<string name="toggleButton_NO">NEIN</string>
+	<string name="toggleButton_ON">EIN</string>
+	<string name="toggleButton_OFF">AUS</string>
 	<string name="keepBtOnAfterCallEnded">Soll das Bluetooth Modul ausgeschaltet werden nach Gesprich beendet ist?</string>
+	<string name="switchOffEntrireService">Ein/Ausschalten den Service (Hauptschalter)</string>
 	<string name="processAlsoOutgoingCalls">Bedienen auch ausgehende Gespriche</string>
 	<string name="infoText">Besuchen Sie https://code.google.com/p/bthfpowersave f\u00fcr mehr Informationen \u00fcber diesen Produkt.</string>
 	<string name="toastTextAfterDeletingWidget">BTHF PowerSave wahr ausgechaltet</string>

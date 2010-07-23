@@ -4,12 +4,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ToggleButton;
 
 public class ConfigurationActivity extends Activity {
+
+	// logger entry
+	private final static String LOG_TAG = ConfigurationActivity.class.getSimpleName();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,8 @@ public class ConfigurationActivity extends Activity {
                 Intent configSavedIntent = new Intent(WidgetConfigure.CONFIG_SAVED);
                 configSavedIntent.putExtra(WidgetConfigure.PERFORM_SHAREDPREFERECES_EDIT, false);
                 sendBroadcast(configSavedIntent);
+                
+                Log.d(LOG_TAG, android.os.Build.VERSION.RELEASE + "|" + android.os.Build.MODEL);
                 
 				finish();
 			}
