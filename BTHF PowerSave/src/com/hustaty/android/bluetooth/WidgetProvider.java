@@ -7,6 +7,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
@@ -86,19 +87,31 @@ public class WidgetProvider extends AppWidgetProvider {
 		RemoteViews updateView = new RemoteViews(context.getPackageName(), R.layout.widget);
 		ComponentName thisWidget = new ComponentName(context, WidgetProvider.class);
 		
-		if (intent.getAction().equals(WidgetConfigure.WIDGET_CLICK)) {
+		if (intent.getAction().equals(WidgetConfigure.WIDGET_CLICK)
+				|| intent.getAction().equals(WidgetConfigure.CONFIG_SAVED)) {
+
+			//load SharedPreferences on receiving specific actions
+			SharedPreferences settings = context.getSharedPreferences(WidgetConfigure.PREFS_NAME, Activity.MODE_PRIVATE);
+			WidgetConfigurationHolder.loadPreferences(settings);
+
+			if(!intent.hasExtra(WidgetConfigure.PERFORM_SHAREDPREFERECES_EDIT)) {
+				// toggle state and store settings
+				WidgetConfigurationHolder.getInstance().setEnabled(context, !WidgetConfigurationHolder.getInstance().isEnabled());
+			} else if(intent.getBooleanExtra(WidgetConfigure.PERFORM_SHAREDPREFERECES_EDIT, false)) {
+				// toggle state and store settings
+				WidgetConfigurationHolder.getInstance().setEnabled(context, !WidgetConfigurationHolder.getInstance().isEnabled());
+			}
+				
+			//toggle widget according to current state
 			if (WidgetConfigurationHolder.getInstance().isEnabled()) {
-				updateView.setImageViewResource(R.id.imagebutton, R.drawable.off);
-			} else {
 				updateView.setImageViewResource(R.id.imagebutton, R.drawable.on);
+			} else {
+				updateView.setImageViewResource(R.id.imagebutton, R.drawable.off);
 			}
 			
 			//get Appwidget manager and change widget image
 			AppWidgetManager.getInstance(context).updateAppWidget(thisWidget, updateView);
 			
-			// toggle state and store settings
-			WidgetConfigurationHolder.getInstance().setEnabled(context, !WidgetConfigurationHolder.getInstance().isEnabled());
-			           
 			if(Log.isLoggable(LOG_TAG, Log.DEBUG)) {
 				Log.d(LOG_TAG, "Storing values:" + WidgetConfigurationHolder.getInstance().toString());
 			}

@@ -20,6 +20,7 @@ public class WidgetConfigure extends Activity {
 
 	//action to be caught
 	public static final String CONFIG_SAVED = "com.hustaty.android.bluetooth.action.CONFIG_SAVED";
+	public static final String PERFORM_SHAREDPREFERECES_EDIT = "performUpdate";
 	
 	//click action to be caught - click on widget icon
 	public static final String WIDGET_CLICK = "com.hustaty.android.bluetooth.action.CLICK";
