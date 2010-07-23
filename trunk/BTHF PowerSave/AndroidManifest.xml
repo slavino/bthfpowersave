@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.hustaty.android.bluetooth" android:versionName="1.0.5" android:versionCode="6">
+	package="com.hustaty.android.bluetooth" android:versionCode="7" android:versionName="1.0.6">
 	<application android:icon="@drawable/icon" android:label="@string/app_name" android:debuggable="true">
 
 		<receiver android:name=".WidgetReceiver"> 
