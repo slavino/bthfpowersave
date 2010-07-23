@@ -9,9 +9,10 @@
 	<string name="toggleButton_ON">ON</string>
 	<string name="toggleButton_OFF">OFF</string>
 	<string name="keepBtOnAfterCallEnded">Switch OFF phone\u0027s bluetooth module after call ended</string>
-	<string name="switchOffEntrireService">Switch ON/OFF the service</string>
+	<string name="switchOffEntrireService">Switch ON/OFF the service (master switch)</string>
 	<string name="processAlsoOutgoingCalls">Process also outgoing calls</string>
 	<string name="infoText">Visit https://code.google.com/p/bthfpowersave for more information about this product.</string>
+	<string name="feedbackText">Visit feedback form and provide your comments: http://tinyurl.com/2f7dh8k</string>
 	<string name="toastTextAfterDeletingWidget">BTHF PowerSave went OFF</string>
 
 </resources>

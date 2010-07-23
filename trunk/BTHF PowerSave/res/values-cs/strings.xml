@@ -6,7 +6,10 @@
     <string name="save_config">Uložit</string>
 	<string name="toggleButton_YES">ANO</string>
 	<string name="toggleButton_NO">NE</string>
+	<string name="toggleButton_ON">ON</string>
+	<string name="toggleButton_OFF">OFF</string>
 	<string name="keepBtOnAfterCallEnded">Vypnout bluetooth na telefonu po ukončení hovoru</string>
+	<string name="switchOffEntrireService">Zapnout/Vypnout připájení se na handsfree (hlavní vypínač)</string>
 	<string name="processAlsoOutgoingCalls">Spracovávat i odchozí hovory</string>
 	<string name="infoText">Navštívte https://code.google.com/p/bthfpowersave pro více informací o produktu.</string>
 	<string name="toastTextAfterDeletingWidget">BTHF PowerSave byl vypnut</string>

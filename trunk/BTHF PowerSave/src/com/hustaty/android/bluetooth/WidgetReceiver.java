@@ -19,15 +19,12 @@ public class WidgetReceiver extends BroadcastReceiver {
 		SharedPreferences settings = context.getSharedPreferences(WidgetConfigure.PREFS_NAME, Activity.MODE_PRIVATE);
 		WidgetConfigurationHolder.loadPreferences(settings);
 		
-//		TelephonyManager telephonyManager = (TelephonyManager) context.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
-		
 		//listen to CALL_STATE changes
-		Log.d(LOG_TAG, "#onReceive(): starting service");
+		Log.d(LOG_TAG, "#onReceive(): determinig whether service is running service");
 		if(!NotificationService.isRunning(context)) {
 			NotificationService.start(context);
 			Log.d(LOG_TAG, "starting service");
 		}
-		//telephonyManager.listen(new MyPhoneStateListener(), PhoneStateListener.LISTEN_CALL_STATE);
 		
 	}
 
