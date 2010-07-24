@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.Toast;
 
 public class WidgetConfigurationHolder {
 
@@ -62,6 +63,12 @@ public class WidgetConfigurationHolder {
 	public void setEnabled(Context context, Boolean enabled) {
 		setEnabled(enabled);
 		this.storePreference(context, ENABLED, enabled);
+		if(enabled && !NotificationService.isRunning(context)) {
+			NotificationService.start(context);
+		} else if(!enabled && NotificationService.isRunning(context)) {
+			NotificationService.stop(context);			
+		}
+
 	}
 	
 	public Boolean isSwitchOffBTAfterCallEnded() {
