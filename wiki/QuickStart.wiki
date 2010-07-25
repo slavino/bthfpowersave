@@ -12,7 +12,7 @@ After successful installation place a widget on the home screen.
 Single time Configuration will appear and ask you for BT state behaviour after call ended and whether it should process also outgoing calls.
 Setup the options and press "Menu" button to display options menu with "Save" option.
 
-Changing *BTHF PowerSave* behaviour requires placing new widget on home screen where again will appear single time configuration. You can delete the additional widget afterwards.
+Changing *BTHF PowerSave* behaviour requires either running main activity from Applications menu or placing new widget on home screen where again will appear single time configuration. You can delete the additional widget afterwards.
 
 = Details =
 
