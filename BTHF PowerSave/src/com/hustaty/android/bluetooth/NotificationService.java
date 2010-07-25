@@ -28,11 +28,17 @@ public class NotificationService extends Service {
 
 	private final PhoneStateListener ringListener = new MyPhoneStateListener(this);
 
+	/**
+	 * onbind
+	 */
 	@Override
 	public IBinder onBind(Intent intent) {
 		return null;
 	}
 
+	/**
+	 * service start
+	 */
 	@Override
 	public void onStart(Intent intent, int startId) {
 		super.onStart(intent, startId);
@@ -45,17 +51,34 @@ public class NotificationService extends Service {
 
 		// Register the ring listener
 		tm.listen(ringListener, PhoneStateListener.LISTEN_CALL_STATE);
+
+		Thread t = new Thread() {
+			@Override
+			public synchronized void start() {
+				super.start();
+				//notify user if there is any problem
+				checkBluetoothDevices();
+			}
+		};
+
+		t.start();
 		
-		//notify user if there is any problem
-		checkPairedBluetoothDevices();
 	}
 
+	/**
+	 * destroying service
+	 */
 	@Override
 	public void onDestroy() {
 		Toast.makeText(this.getApplicationContext(), R.string.toastTextAfterDeletingWidget, Toast.LENGTH_LONG).show();
 		super.onDestroy();
 	}
 
+	/**
+	 * checks current state stopped/started
+	 * @param context
+	 * @return
+	 */
 	public static boolean isRunning(Context context) {
 		ActivityManager activityManager = (ActivityManager) context
 				.getSystemService(ACTIVITY_SERVICE);
@@ -73,32 +96,59 @@ public class NotificationService extends Service {
 		return false;
 	}
 
+	/**
+	 * starts the service
+	 * @param context
+	 */
 	public static void start(Context context) {
 		context.startService(new Intent(context, NotificationService.class));
 		Log.i(LOG_TAG, "Sending intent to start notification service");
 	}
 
+	/**
+	 * stops the service
+	 * @param context
+	 */
 	public static void stop(Context context) {
 		context.stopService(new Intent(context, NotificationService.class));
 		Log.i(LOG_TAG, "Sending intent to stop notification service");
 	}
 
-	private void checkPairedBluetoothDevices() {
+	private void checkBluetoothDevices() {
 		BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+		
 		if(bluetoothAdapter != null) {
+			boolean btStateBeforeCheck = bluetoothAdapter.isEnabled();
+			
+			if(!btStateBeforeCheck) {
+				BluetoothAdapterUtil.startBluetoothAdapter();		
+			}
+
 			Set<BluetoothDevice> btDevices = bluetoothAdapter.getBondedDevices();
 			for (BluetoothDevice btDevice : btDevices) {
-				if (btDevice.getBluetoothClass().getDeviceClass() == BluetoothClass.Device.AUDIO_VIDEO_WEARABLE_HEADSET) {
+				
+				Log.d(LOG_TAG, "checking device " + btDevice.getName());
+
+				switch(btDevice.getBluetoothClass().getDeviceClass()) {
+				case BluetoothClass.Device.AUDIO_VIDEO_WEARABLE_HEADSET:
+				case BluetoothClass.Device.AUDIO_VIDEO_HANDSFREE:
+				case BluetoothClass.Device.AUDIO_VIDEO_CAR_AUDIO:
+				case 1036: //magic number - Jabra BT 160 fix
 					return;
 				}
 			}
+			
+			if(!btStateBeforeCheck) {
+				BluetoothAdapterUtil.stopBluetoothAdapter();		
+			}
+			
 		} else {
 			//something is wrong with BTadapter
 			Toast.makeText(this.getApplicationContext(), R.string.toastTextOnBTAdapterNotReachable, Toast.LENGTH_LONG).show();
 			return;
 		}
+		
 		//report that no device was found
 		Toast.makeText(this.getApplicationContext(), R.string.toastTextOnBTDeviceNotPaired, Toast.LENGTH_LONG).show();
 	}
-	
 }
