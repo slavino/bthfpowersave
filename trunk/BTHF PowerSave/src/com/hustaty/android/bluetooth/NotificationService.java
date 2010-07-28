@@ -45,7 +45,6 @@ public class NotificationService extends Service {
 
 		Log.i(LOG_TAG, "Starting notification service");
 		instanceHandler = new Handler();
-		
 
 		final TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
 
@@ -61,7 +60,7 @@ public class NotificationService extends Service {
 			}
 		};
 
-		t.start();
+		//t.start();
 		
 	}
 
@@ -80,10 +79,8 @@ public class NotificationService extends Service {
 	 * @return
 	 */
 	public static boolean isRunning(Context context) {
-		ActivityManager activityManager = (ActivityManager) context
-				.getSystemService(ACTIVITY_SERVICE);
-		List<RunningServiceInfo> services = activityManager
-				.getRunningServices(Integer.MAX_VALUE);
+		ActivityManager activityManager = (ActivityManager) context.getSystemService(ACTIVITY_SERVICE);
+		List<RunningServiceInfo> services = activityManager.getRunningServices(Integer.MAX_VALUE);
 
 		for (RunningServiceInfo serviceInfo : services) {
 			ComponentName componentName = serviceInfo.service;
@@ -97,7 +94,7 @@ public class NotificationService extends Service {
 	}
 
 	/**
-	 * starts the service
+	 * starts the service in given Context
 	 * @param context
 	 */
 	public static void start(Context context) {
@@ -106,7 +103,7 @@ public class NotificationService extends Service {
 	}
 
 	/**
-	 * stops the service
+	 * stops the service in given Context
 	 * @param context
 	 */
 	public static void stop(Context context) {
@@ -114,6 +111,9 @@ public class NotificationService extends Service {
 		Log.i(LOG_TAG, "Sending intent to stop notification service");
 	}
 
+	/**
+	 * performs check whether there are BT peripherals matching needs of this application
+	 */
 	private void checkBluetoothDevices() {
 		BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 		
@@ -124,6 +124,7 @@ public class NotificationService extends Service {
 				BluetoothAdapterUtil.startBluetoothAdapter();		
 			}
 
+			//let's see if we have at least one bonded/paired BT device for connecting when call arrives
 			Set<BluetoothDevice> btDevices = bluetoothAdapter.getBondedDevices();
 			for (BluetoothDevice btDevice : btDevices) {
 				
@@ -134,6 +135,7 @@ public class NotificationService extends Service {
 				case BluetoothClass.Device.AUDIO_VIDEO_HANDSFREE:
 				case BluetoothClass.Device.AUDIO_VIDEO_CAR_AUDIO:
 				case 1036: //magic number - Jabra BT 160 fix
+					Log.i(LOG_TAG, "One of expected bluetooth device classes was found.");
 					return;
 				}
 			}
@@ -145,10 +147,12 @@ public class NotificationService extends Service {
 		} else {
 			//something is wrong with BTadapter
 			Toast.makeText(this.getApplicationContext(), R.string.toastTextOnBTAdapterNotReachable, Toast.LENGTH_LONG).show();
+			Log.w(LOG_TAG, "Problems with BT adapter.");
 			return;
 		}
 		
 		//report that no device was found
 		Toast.makeText(this.getApplicationContext(), R.string.toastTextOnBTDeviceNotPaired, Toast.LENGTH_LONG).show();
+		Log.i(LOG_TAG, "!!! None of expected bluetooth device classes was found.");
 	}
 }
