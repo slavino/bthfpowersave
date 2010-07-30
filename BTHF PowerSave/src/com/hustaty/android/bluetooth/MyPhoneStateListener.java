@@ -1,8 +1,17 @@
 package com.hustaty.android.bluetooth;
 
+import java.io.IOException;
+import java.util.Set;
+import java.util.UUID;
+
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothClass;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -11,9 +20,6 @@ public class MyPhoneStateListener extends PhoneStateListener {
 
 	// logger entry
 	private final static String LOG_TAG = MyPhoneStateListener.class.getSimpleName();
-
-    //well known UUID :)                           
-//    private static final String BT_SERVICE_UUID = "00001101-0000-100­0-8000-00805F9B34FB";
 
 	//reference to Bluetooth Adapter
 	private BluetoothAdapter bluetoothAdapter;
@@ -45,7 +51,7 @@ public class MyPhoneStateListener extends PhoneStateListener {
 				case TelephonyManager.CALL_STATE_IDLE:
 					stateString = "Idle";
 					if(WidgetConfigurationHolder.getInstance().isSwitchOffBTAfterCallEnded()) {
-						bluetoothAdapter.disable();
+						BluetoothAdapterUtil.stopBluetoothAdapter();
 					}
 					break;
 				case TelephonyManager.CALL_STATE_OFFHOOK:
@@ -53,14 +59,16 @@ public class MyPhoneStateListener extends PhoneStateListener {
 					if (!bluetoothAdapter.isEnabled() 
 							&& WidgetConfigurationHolder.getInstance().isProcessOutgoingCalls()
 							&& isOutgoingCall(incomingNumber)) {
-						bluetoothAdapter.enable();
+						BluetoothAdapterUtil.startBluetoothAdapter();
+						connectToDevice();
 					}
 					break;
 				case TelephonyManager.CALL_STATE_RINGING:
 					stateString = "Ringing";
 					if (!bluetoothAdapter.isEnabled()) {
-						bluetoothAdapter.enable();
+						BluetoothAdapterUtil.startBluetoothAdapter();
 					}
+					connectToDevice();
 					break;
 			}
 
@@ -86,37 +94,21 @@ public class MyPhoneStateListener extends PhoneStateListener {
 		return false;
 	}
 	
-//  /**
-//  * perform connect to device - don't rely on platform anymore
-//  */
-// private void connectToDevice() {
-//         if(bluetoothAdapter.isDiscovering()) {
-//                 bluetoothAdapter.cancelDiscovery();
-//         }
-//         Set<BluetoothDevice> btDevices = bluetoothAdapter.getBondedDevices();
-//         for(BluetoothDevice btDevice : btDevices) {
-//                 if(btDevice.getBluetoothClass().getDeviceClass() == BluetoothClass.Device.AUDIO_VIDEO_WEARABLE_HEADSET) {
-//                         
-//                 		BluetoothSocket btSocket = null;
-//                         
-//                         try {
-//                                 Log.d(LOG_TAG, "Trying to connect to: " + btDevice.getName());
-//                                 bluetoothAdapter.getRemoteDevice(btDevice.getAddress());
-//                                 btSocket = btDevice.createRfcommSocketToServiceRecord(UUID.fromString(BT_SERVICE_UUID));
-//                                 btSocket.connect();
-//                                 //successfully connected to remote device
-//                                 return;
-//                         } catch(IOException e) {
-//                                 Log.e(LOG_TAG, "Message: " + e.getMessage() + "\nCaused by: " + e.getCause().getMessage());
-//                                 try {
-//                                         btSocket.close();
-//                                 } catch (IOException ex) {
-//                                         Log.e(LOG_TAG, "Couldn't close BluetoothSocket.");
-//                                 }
-//                         }
-//                 }
-//         }
-// }
-//
+	/**
+	 * perform connect to device - don't rely on platform anymore
+	 */
+	private void connectToDevice() {
+		AudioManager audioManager = (AudioManager) service.getSystemService(Context.AUDIO_SERVICE);
+		if(audioManager.isBluetoothA2dpOn() || audioManager.isBluetoothScoOn() || audioManager.isWiredHeadsetOn()) {
+			//do nothing 
+		} else {
+			if (bluetoothAdapter.isDiscovering()) {
+				Log.d(LOG_TAG, "Cancelling discovery");
+				bluetoothAdapter.cancelDiscovery();
+			}
+			Log.d(LOG_TAG, "Audio Manager: requiring #setBluetoothScoOn(true)");
+			audioManager.setBluetoothScoOn(true);
+		}
+	}
 	
 }
