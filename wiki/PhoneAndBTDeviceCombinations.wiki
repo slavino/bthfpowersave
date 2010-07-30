@@ -1,0 +1,14 @@
+#summary working and not working combination of devices
+
+= Working phones and accessories =
+|| *Phone* || *Bluetooth accessory* ||
+|| HTC Desire (2.1update1) || Jabra BT160 ||
+|| HTC Hero (2.1update1) || Plantronics Voyager 520 ||
+|| Nexus One (2.1update1) || Plantronics Voyager 520 ||
+|| Samsung Galaxy S || Nokia BH-602 ||
+
+
+= Not working combinations of phones and accessories =
+|| *Phone* || *Bluetooth accessory* || *Comment* ||
+|| HTC Desire (2.1update1) || Nokia BH-106 || reported 20^th^ July 2010 - with BTHF PowerSave version *1.0.6* ||
+|| Samsung Galaxy S || Sony-Ericsson HBH-DS980 || reported 29^th^ July 2010 - with BTHF PowerSave version *1.0.7* ||
