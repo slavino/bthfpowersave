@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="com.hustaty.android.bluetooth" android:versionName="1.0.8" android:versionCode="9">
-	<application android:icon="@drawable/icon" android:label="@string/app_name" android:debuggable="true">
+	<application android:icon="@drawable/icon" android:label="@string/app_name" android:debuggable="false">
 
 		<receiver android:name=".WidgetReceiver"> 
 			<intent-filter>
@@ -43,7 +43,7 @@
 
 	</application>
 
-	<uses-sdk android:minSdkVersion="7" />
+	<uses-sdk android:minSdkVersion="7" android:maxSdkVersion="7" android:targetSdkVersion="7"/>
 
 	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
