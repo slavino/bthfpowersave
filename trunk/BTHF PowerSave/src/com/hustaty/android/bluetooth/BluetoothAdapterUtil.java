@@ -8,6 +8,10 @@ public class BluetoothAdapterUtil {
 	// logger entry
 	private final static String LOG_TAG = BluetoothAdapterUtil.class.getSimpleName();
 
+	private static final int LOOP_WAIT_TIME = 200;
+	
+	private static final int MAX_REPETITIONS_COUNT = 30;
+	
 	public static void startBluetoothAdapter() {
 		try {
 			waitUntilBluetoothAdapterIsInState(BluetoothAdapter.STATE_ON);
@@ -31,12 +35,12 @@ public class BluetoothAdapterUtil {
 	 * @throws Exception
 	 */
 	private static void waitUntilBluetoothAdapterIsInState(int state) throws Exception {
-		BluetoothAdapter bluetoothAdapter = BluetoothAdapter
-				.getDefaultAdapter();
+		BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+		
 		switch (state) {
 		case BluetoothAdapter.STATE_OFF:
 			if (bluetoothAdapter.getState() == BluetoothAdapter.STATE_TURNING_OFF) {
-				waitNMillis(200);
+				waitNMillis(LOOP_WAIT_TIME);
 				waitUntilBluetoothAdapterIsInState(BluetoothAdapter.STATE_OFF);
 			} else if (bluetoothAdapter.getState() == BluetoothAdapter.STATE_OFF) {
 				Log.d(LOG_TAG, "BluetoothAdapter is in state OFF");
@@ -49,7 +53,7 @@ public class BluetoothAdapterUtil {
 			break;
 		case BluetoothAdapter.STATE_ON:
 			if (bluetoothAdapter.getState() == BluetoothAdapter.STATE_TURNING_ON) {
-				waitNMillis(200);
+				waitNMillis(LOOP_WAIT_TIME);
 				waitUntilBluetoothAdapterIsInState(BluetoothAdapter.STATE_ON);
 			} else if (bluetoothAdapter.getState() == BluetoothAdapter.STATE_ON) {
 				Log.d(LOG_TAG, "BluetoothAdapter is in state ON");
