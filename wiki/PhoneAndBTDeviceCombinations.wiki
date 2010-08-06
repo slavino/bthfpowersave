@@ -1,4 +1,4 @@
-#summary working and not working combination of devices
+#summary working and not working combinations of devices
 
 = Working phones and accessories =
 || *Phone* || *Bluetooth accessory* ||
