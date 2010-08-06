@@ -3,10 +3,10 @@
 = Working phones and accessories =
 || *Phone* || *Bluetooth accessory* ||
 || HTC Desire (2.1update1) || Jabra BT160 ||
+|| HTC Desire (2.2) || Fiat Bravo ||
 || HTC Hero (2.1update1) || Plantronics Voyager 520 ||
 || Nexus One (2.1update1) || Plantronics Voyager 520 ||
 || Samsung Galaxy S || Nokia BH-602 ||
-|| HTC Desire (2.2) || Fiat Bravo ||
 
 
 = Not working combinations of phones and accessories =
