@@ -1,4 +1,5 @@
 #summary working and not working combinations of devices
+#labels Featured
 
 = Working phones and accessories =
 || *Phone* || *Bluetooth accessory* ||
