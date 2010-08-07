@@ -4,6 +4,7 @@
 = Introduction =
 
 Widget reacts on single click by tapping on it's icon on home screen.
+You can use also *BTHF PowerSave* application in the list of installed applications if you don't wish using widget.
 
 = Installation = 
 
@@ -13,6 +14,8 @@ Single time Configuration will appear and ask you for BT state behaviour after c
 Setup the options and press "Menu" button to display options menu with "Save" option.
 
 Changing *BTHF PowerSave* behaviour requires either running main activity from Applications menu or placing new widget on home screen where again will appear single time configuration. You can delete the additional widget afterwards.
+
+On deleting the widget the *BTHF PowerSave* will stop handling phone calls.
 
 = Details =
 
