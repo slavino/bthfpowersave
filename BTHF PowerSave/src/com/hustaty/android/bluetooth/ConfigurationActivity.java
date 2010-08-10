@@ -56,6 +56,10 @@ public class ConfigurationActivity extends Activity {
 
                 // Commit the edits!
                 editor.commit();
+
+                //load latest settings
+                WidgetConfigurationHolder.loadPreferences(settings);
+                
                 Intent configSavedIntent = new Intent(WidgetConfigure.CONFIG_SAVED);
                 configSavedIntent.putExtra(WidgetConfigure.PERFORM_SHAREDPREFERECES_EDIT, false);
                 sendBroadcast(configSavedIntent);
