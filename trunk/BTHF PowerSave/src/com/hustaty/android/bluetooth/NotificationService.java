@@ -69,7 +69,7 @@ public class NotificationService extends Service {
 	 */
 	@Override
 	public void onDestroy() {
-		Toast.makeText(this.getApplicationContext(), R.string.toastTextAfterDeletingWidget, Toast.LENGTH_LONG).show();
+		//Toast.makeText(this.getApplicationContext(), R.string.toastTextAfterDeletingWidget, Toast.LENGTH_LONG).show();
 		super.onDestroy();
 	}
 
@@ -135,6 +135,7 @@ public class NotificationService extends Service {
 				case BluetoothClass.Device.AUDIO_VIDEO_HANDSFREE:
 				case BluetoothClass.Device.AUDIO_VIDEO_CAR_AUDIO:
 				case 1036: //magic number - Jabra BT 160 fix
+				case BluetoothClass.Device.AUDIO_VIDEO_UNCATEGORIZED: //magic number - Sony-Ericsson HBH-DS980
 					Log.i(LOG_TAG, "One of expected bluetooth device classes was found.");
 					return;
 				}

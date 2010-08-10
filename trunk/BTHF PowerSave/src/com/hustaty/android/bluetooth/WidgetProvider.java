@@ -20,7 +20,8 @@ public class WidgetProvider extends AppWidgetProvider {
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
 			int[] appWidgetIds) {
-
+		Log.d(LOG_TAG, "#onUpdate() started");
+		
 		RemoteViews updateView = new RemoteViews(context.getPackageName(), R.layout.widget);
 		appWidgetManager.updateAppWidget(appWidgetIds, updateView);
 
@@ -64,9 +65,7 @@ public class WidgetProvider extends AppWidgetProvider {
 			NotificationService.stop(context);
 		}
 
-		if(Log.isLoggable(LOG_TAG, Log.DEBUG)) {
-			Log.d(LOG_TAG, "Stroring values:" + WidgetConfigurationHolder.getInstance().toString());
-		}
+		Log.d(LOG_TAG, "Stroring values:" + WidgetConfigurationHolder.getInstance().toString());
 		
 		super.onDeleted(context, appWidgetIds);
 	}
@@ -112,9 +111,7 @@ public class WidgetProvider extends AppWidgetProvider {
 			//get Appwidget manager and change widget image
 			AppWidgetManager.getInstance(context).updateAppWidget(thisWidget, updateView);
 			
-			if(Log.isLoggable(LOG_TAG, Log.DEBUG)) {
-				Log.d(LOG_TAG, "Storing values:" + WidgetConfigurationHolder.getInstance().toString());
-			}
+			Log.d(LOG_TAG, "Storing values:" + WidgetConfigurationHolder.getInstance().toString());
 		}
 	}
 
