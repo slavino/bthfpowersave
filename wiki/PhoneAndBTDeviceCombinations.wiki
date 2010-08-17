@@ -1,6 +1,9 @@
 #summary working and not working combinations of devices
 #labels Featured
 
+= Comments =
+Source for this report is personal experience and feedback form located here: [http://tinyurl.com/2f7dh8k]
+
 = Working phones and accessories =
 || *Phone* || *Bluetooth accessory* ||
 || HTC Desire (2.1update1) || Jabra BT160 ||
