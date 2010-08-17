@@ -15,3 +15,4 @@
 || *Phone* || *Bluetooth accessory* || *Comment* ||
 || HTC Desire (2.1update1) || Nokia BH-106 || reported 20^th^ July 2010 - with BTHF PowerSave version *1.0.6* ||
 || Samsung Galaxy S || Sony-Ericsson HBH-DS980 || reported 29^th^ July 2010 - with BTHF PowerSave version *1.0.7* ||
+|| Samsung Galaxy S (T-Mobile Vibrant) || Jabra (no model specified) || reported 14^th^ August 2010 - with BTHF PowerSave version *1.0.10* ||
