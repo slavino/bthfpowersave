@@ -72,11 +72,17 @@ public class WidgetProvider extends AppWidgetProvider {
 
 	@Override
 	public void onDisabled(Context context) {
+		if(NotificationService.isRunning(context)) {
+			NotificationService.stop(context);
+		}
 		super.onDisabled(context);
 	}
 
 	@Override
 	public void onEnabled(Context context) {
+		if(!NotificationService.isRunning(context)) {
+			NotificationService.start(context);
+		}
 		super.onEnabled(context);
 	}
 
