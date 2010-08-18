@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
     <string name="app_name">BTHF PowerSave</string>
     <string name="service_name">BTHF PowerSave Service</string>
     <string name="save_config">Uložit</string>
@@ -12,6 +11,8 @@
 	<string name="switchOffEntrireService">Zapnout/Vypnout připájení se na handsfree (hlavní vypínač)</string>
 	<string name="processAlsoOutgoingCalls">Spracovávat i odchozí hovory</string>
 	<string name="infoText">Navštívte https://code.google.com/p/bthfpowersave pro více informací o produktu.</string>
+	<string name="feedbackText">Navštívte formulář spětné vazby na produkt a pokytněte Vaše komenty: http://tinyurl.com/2f7dh8k</string>
 	<string name="toastTextAfterDeletingWidget">BTHF PowerSave byl vypnut</string>
-
+	<string name="toastTextOnBTDeviceNotPaired">BTHF PowerSave wasn\u0027t able to find any paired BT devices for communication.</string>
+	<string name="toastTextOnBTAdapterNotReachable">Bluetooth adapter není dosažitelný.\nMůže by to způsobit závažné problémy aplikaci BTHF PowerSave.</string>
 </resources>
