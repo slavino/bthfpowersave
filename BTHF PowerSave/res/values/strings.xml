@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
     <string name="app_name">BTHF PowerSave</string>
     <string name="service_name">BTHF PowerSave Service</string>
 	<string name="save_config">Save</string>
