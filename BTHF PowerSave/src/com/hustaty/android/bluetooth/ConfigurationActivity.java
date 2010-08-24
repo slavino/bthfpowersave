@@ -23,6 +23,7 @@ public class ConfigurationActivity extends Activity {
 		SharedPreferences settings = getSharedPreferences(WidgetConfigure.PREFS_NAME, MODE_PRIVATE);
 	    
 		WidgetConfigurationHolder.loadPreferences(settings);
+		
 		ToggleButton switchOffServiceToggleButton = (ToggleButton) findViewById(R.id.switchOffService);
 		switchOffServiceToggleButton.setChecked(WidgetConfigurationHolder.getInstance().isEnabled());
 		

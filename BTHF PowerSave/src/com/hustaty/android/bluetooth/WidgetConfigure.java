@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ToggleButton;
 
 public class WidgetConfigure extends Activity {
@@ -44,6 +47,11 @@ public class WidgetConfigure extends Activity {
 	    
 		WidgetConfigurationHolder.loadPreferences(settings);
 		
+        //set service ON/OFF
+        ToggleButton switchOffServiceToggleButton = (ToggleButton) findViewById(R.id.switchOffService);
+        switchOffServiceToggleButton.setChecked(WidgetConfigurationHolder.getInstance().isEnabled());
+
+		
 		//get toggle button stored value - turn off after call ended
 	    ToggleButton switchOffBTAfterCallEndedToggleButton = (ToggleButton) findViewById(R.id.switchOffBTAfterCallEndedToggleButton);
 	    switchOffBTAfterCallEndedToggleButton.setChecked(WidgetConfigurationHolder.getInstance().isSwitchOffBTAfterCallEnded());
@@ -57,6 +65,42 @@ public class WidgetConfigure extends Activity {
 		}
 
 		setResult(RESULT_CANCELED);
+		
+	    Button saveSettingsButton = (Button) findViewById(R.id.config_save_button);
+	    saveSettingsButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+                if(Log.isLoggable(LOG_TAG, Log.DEBUG)) {
+                	Log.d(LOG_TAG, "Saving configuration." + WidgetConfigurationHolder.getInstance().toString());
+                }
+                
+                SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+                SharedPreferences.Editor editor = settings.edit();
+
+                //set service ON/OFF
+                ToggleButton switchOffServiceToggleButton = (ToggleButton) findViewById(R.id.switchOffService);
+                editor.putBoolean(WidgetConfigurationHolder.ENABLED, switchOffServiceToggleButton.isChecked());
+                
+                ToggleButton switchOffBTAfterCallEndedToggleButton = (ToggleButton) findViewById(R.id.switchOffBTAfterCallEndedToggleButton);
+                editor.putBoolean(WidgetConfigurationHolder.SWITCH_OFF_BT_AFTER_CALL_ENDED, switchOffBTAfterCallEndedToggleButton.isChecked());
+
+                ToggleButton processOutgoingCallsToggleButton = (ToggleButton) findViewById(R.id.processOutgoingCallsToggleButton);
+                editor.putBoolean(WidgetConfigurationHolder.PROCESS_OUTGOING_CALLS, processOutgoingCallsToggleButton.isChecked());
+
+                // Commit the edits!
+                editor.commit();
+                
+                WidgetConfigurationHolder.loadPreferences(settings);
+                
+                Intent resultValue = new Intent();
+                resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+                setResult(RESULT_OK, resultValue);
+                sendBroadcast(resultValue);
+
+                finish();
+			}
+		});
+
 
 	}
 
@@ -78,9 +122,6 @@ public class WidgetConfigure extends Activity {
 				sendBroadcast(configSavedIntent);
 				
 				if (appWidgetId != AppWidgetManager.INVALID_APPWIDGET_ID) {
-                    Intent resultValue = new Intent();
-                    resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-                    setResult(RESULT_OK, resultValue);
                     
                     if(Log.isLoggable(LOG_TAG, Log.DEBUG)) {
                     	Log.d(LOG_TAG, "Saving configuration." + WidgetConfigurationHolder.getInstance().toString());
@@ -89,16 +130,25 @@ public class WidgetConfigure extends Activity {
                     SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
                     SharedPreferences.Editor editor = settings.edit();
 
+                    //set service ON/OFF
+                    ToggleButton switchOffServiceToggleButton = (ToggleButton) findViewById(R.id.switchOffService);
+                    editor.putBoolean(WidgetConfigurationHolder.ENABLED, switchOffServiceToggleButton.isChecked());
+                    
                     ToggleButton switchOffBTAfterCallEndedToggleButton = (ToggleButton) findViewById(R.id.switchOffBTAfterCallEndedToggleButton);
                     editor.putBoolean(WidgetConfigurationHolder.SWITCH_OFF_BT_AFTER_CALL_ENDED, switchOffBTAfterCallEndedToggleButton.isChecked());
 
                     ToggleButton processOutgoingCallsToggleButton = (ToggleButton) findViewById(R.id.processOutgoingCallsToggleButton);
                     editor.putBoolean(WidgetConfigurationHolder.PROCESS_OUTGOING_CALLS, processOutgoingCallsToggleButton.isChecked());
 
-                    editor.putBoolean(WidgetConfigurationHolder.ENABLED, WidgetConfigurationHolder.getInstance().isEnabled());
-
                     // Commit the edits!
                     editor.commit();
+                    
+                    WidgetConfigurationHolder.loadPreferences(settings);
+                    
+                    Intent resultValue = new Intent();
+                    resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+                    setResult(RESULT_OK, resultValue);
+                    sendBroadcast(resultValue);
                 }
                 finish();
 				return true;
