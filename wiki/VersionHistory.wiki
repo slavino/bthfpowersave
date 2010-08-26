@@ -1,1 +1,35 @@
 #release notes
+
+= Version history =
+26^th^ August 2010 - version *1.0.12* 
+  * fixed service auto start when application's master switch is off
+26^th^ August 2010 - version *1.0.11*
+  * more convenient configuration of widget (unified layout of settings screens)
+  * tried to fix problem with widget tapping ignored
+10^th^ August 2010 - version *1.0.10*
+  * fixed bug with widget wrong state showing (hopefully)
+2^nd^ August 2010 - version *1.0.9*
+  * fixed bug with recursive call causing StackOverflowError on Froyo
+30^th^ July 2010 - version *1.0.8*
+  * included Audio manager to force BT connection
+28^th^ July 2010 - version *1.0.7*
+  * small fixes to preferences loading
+23^rd^ July 2010 - version *1.0.6*
+  * added configuration activity for those who don't like the widget
+  * added feedback form link to both configuration screens
+14^th^ July 2010 - version *1.0.5*
+  * fixed bug with service behaviour
+3^rd^ July 2010 - version *1.0.4*
+  * fixed drawables - images resolutions for mdpi and ldpi (more info here: http://developer.android.com/guide/practices/screens_support.html)
+29^th^ June 2010 - version *1.0.3*
+  * fixed logging
+  * fixed debug option (set to false) for release
+
+9^th^ June 2010 - version *1.0.2*
+  * refactoring
+
+4^th^ June 2010 - version *1.0.1*
+  * localization to English, German, Czech, Slovak
+
+3^rd^ June 2010 - version *1.0*
+  * first public release
