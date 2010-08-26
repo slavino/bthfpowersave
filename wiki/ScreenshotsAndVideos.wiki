@@ -1,13 +1,6 @@
-#summary One-sentence summary of this page.
+= Screenshots and Videos =
 
-= Introduction =
-
-Add your content here.
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+|| *Settings screen* || *Widget* ||
+|| [http://bthfpowersave.googlecode.com/svn/trunk/configuration_screen.png] || [http://bthfpowersave.googlecode.com/svn/trunk/widgetonhomescreen.png] ||
+|| *configuration activity* || *Videos* ||
+|| [http://bthfpowersave.googlecode.com/svn/trunk/configuration_activity.png] || [http://www.youtube.com/watch?v=hOqE-WGa6QQ BTHF PowerSave - incomingcall] <br/>     [http://www.youtube.com/watch?v=wao3QnLK0gE BTHF PowerSave - outgoing  call] ||
