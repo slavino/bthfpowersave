@@ -21,7 +21,11 @@ public class WidgetReceiver extends BroadcastReceiver {
 		
 		//listen to CALL_STATE changes
 		Log.d(LOG_TAG, "#onReceive(): determinig whether service is running");
-		if(!NotificationService.isRunning(context)) {
+		if (!NotificationService.isRunning(context)
+				&& settings
+						.getBoolean(
+								WidgetConfigurationHolder.ENABLED,
+								Boolean.FALSE)) {
 			NotificationService.start(context);
 			Log.d(LOG_TAG, "starting service");
 		}
