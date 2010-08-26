@@ -1,14 +1,7 @@
 package com.hustaty.android.bluetooth;
 
-import java.io.IOException;
-import java.util.Set;
-import java.util.UUID;
-
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothClass;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
@@ -46,18 +39,18 @@ public class MyPhoneStateListener extends PhoneStateListener {
 		
 		String stateString = "N/A";
 
-		if(WidgetConfigurationHolder.getInstance().isEnabled() && bluetoothAdapter!=null) {
+		if(WidgetConfigurationHolder.getInstance(service.getApplicationContext()).isEnabled() && bluetoothAdapter!=null) {
 			switch (state) {
 				case TelephonyManager.CALL_STATE_IDLE:
 					stateString = "Idle";
-					if(WidgetConfigurationHolder.getInstance().isSwitchOffBTAfterCallEnded()) {
+					if(WidgetConfigurationHolder.getInstance(service.getApplicationContext()).isSwitchOffBTAfterCallEnded()) {
 						BluetoothAdapterUtil.stopBluetoothAdapter();
 					}
 					break;
 				case TelephonyManager.CALL_STATE_OFFHOOK:
 					stateString = "Off Hook";
 					if (!bluetoothAdapter.isEnabled() 
-							&& WidgetConfigurationHolder.getInstance().isProcessOutgoingCalls()
+							&& WidgetConfigurationHolder.getInstance(service.getApplicationContext()).isProcessOutgoingCalls()
 							&& isOutgoingCall(incomingNumber)) {
 						BluetoothAdapterUtil.startBluetoothAdapter();
 						connectToDevice();

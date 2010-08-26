@@ -25,15 +25,15 @@ public class ConfigurationActivity extends Activity {
 		WidgetConfigurationHolder.loadPreferences(settings);
 		
 		ToggleButton switchOffServiceToggleButton = (ToggleButton) findViewById(R.id.switchOffService);
-		switchOffServiceToggleButton.setChecked(WidgetConfigurationHolder.getInstance().isEnabled());
+		switchOffServiceToggleButton.setChecked(WidgetConfigurationHolder.getInstance(getApplicationContext()).isEnabled());
 		
 		//get toggle button stored value - turn off after call ended
 	    ToggleButton switchOffBTAfterCallEndedToggleButton = (ToggleButton) findViewById(R.id.switchOffBTAfterCallEndedToggleButton);
-	    switchOffBTAfterCallEndedToggleButton.setChecked(WidgetConfigurationHolder.getInstance().isSwitchOffBTAfterCallEnded());
+	    switchOffBTAfterCallEndedToggleButton.setChecked(WidgetConfigurationHolder.getInstance(getApplicationContext()).isSwitchOffBTAfterCallEnded());
 
 		//get toggle button stored value - turn off after call ended
 	    ToggleButton processOutgoingCallsToggleButton = (ToggleButton) findViewById(R.id.processOutgoingCallsToggleButton);
-	    processOutgoingCallsToggleButton.setChecked(WidgetConfigurationHolder.getInstance().isProcessOutgoingCalls());
+	    processOutgoingCallsToggleButton.setChecked(WidgetConfigurationHolder.getInstance(getApplicationContext()).isProcessOutgoingCalls());
 	    
 	    Button saveSettingsButton = (Button) findViewById(R.id.config_save_button);
 	    saveSettingsButton.setOnClickListener(new OnClickListener() {

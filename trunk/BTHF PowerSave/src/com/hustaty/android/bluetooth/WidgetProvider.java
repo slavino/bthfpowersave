@@ -31,7 +31,7 @@ public class WidgetProvider extends AppWidgetProvider {
 				context.getSharedPreferences(WidgetConfigure.PREFS_NAME,
 						Activity.MODE_PRIVATE));
 
-		if (WidgetConfigurationHolder.getInstance().isEnabled()) {
+		if (WidgetConfigurationHolder.getInstance(context).isEnabled()) {
 			updateView.setImageViewResource(R.id.imagebutton, R.drawable.on);
 			if(!NotificationService.isRunning(context)) {
 				NotificationService.start(context);
@@ -59,13 +59,17 @@ public class WidgetProvider extends AppWidgetProvider {
 		Toast.makeText(context, R.string.toastTextAfterDeletingWidget, Toast.LENGTH_LONG).show();
 		
 		//set SharedPreferences main application state to FALSE
-		WidgetConfigurationHolder.getInstance().setEnabled(context, Boolean.FALSE);
+		WidgetConfigurationHolder.getInstance(context).setEnabled(context, Boolean.FALSE);
 
 		if(NotificationService.isRunning(context)) {
 			NotificationService.stop(context);
 		}
 
-		Log.d(LOG_TAG, "Stroring values:" + WidgetConfigurationHolder.getInstance().toString());
+		Log.d(LOG_TAG, "Stroring values:" + WidgetConfigurationHolder.getInstance(context).toString());
+		
+        Intent configSavedIntent = new Intent(WidgetConfigure.CONFIG_SAVED);
+        configSavedIntent.putExtra(WidgetConfigure.PERFORM_SHAREDPREFERECES_EDIT, false);
+        context.sendBroadcast(configSavedIntent);
 		
 		super.onDeleted(context, appWidgetIds);
 	}
@@ -101,14 +105,14 @@ public class WidgetProvider extends AppWidgetProvider {
 
 			if(!intent.hasExtra(WidgetConfigure.PERFORM_SHAREDPREFERECES_EDIT)) {
 				// toggle state and store settings
-				WidgetConfigurationHolder.getInstance().setEnabled(context, !WidgetConfigurationHolder.getInstance().isEnabled());
+				WidgetConfigurationHolder.getInstance(context).setEnabled(context, !WidgetConfigurationHolder.getInstance(context).isEnabled());
 			} else if(intent.getBooleanExtra(WidgetConfigure.PERFORM_SHAREDPREFERECES_EDIT, false)) {
 				// toggle state and store settings
-				WidgetConfigurationHolder.getInstance().setEnabled(context, !WidgetConfigurationHolder.getInstance().isEnabled());
+				WidgetConfigurationHolder.getInstance(context).setEnabled(context, !WidgetConfigurationHolder.getInstance(context).isEnabled());
 			}
 				
 			//toggle widget according to current state
-			if (WidgetConfigurationHolder.getInstance().isEnabled()) {
+			if (WidgetConfigurationHolder.getInstance(context).isEnabled()) {
 				updateView.setImageViewResource(R.id.imagebutton, R.drawable.on);
 			} else {
 				updateView.setImageViewResource(R.id.imagebutton, R.drawable.off);
@@ -117,7 +121,7 @@ public class WidgetProvider extends AppWidgetProvider {
 			//get Appwidget manager and change widget image
 			AppWidgetManager.getInstance(context).updateAppWidget(thisWidget, updateView);
 			
-			Log.d(LOG_TAG, "Storing values:" + WidgetConfigurationHolder.getInstance().toString());
+			Log.d(LOG_TAG, "Storing values:" + WidgetConfigurationHolder.getInstance(context).toString());
 		}
 	}
 
