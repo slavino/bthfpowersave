@@ -1,4 +1,6 @@
+#summary screenshots and videos of BTHF PowerSave
 #labels Featured
+
 = Screenshots and Videos =
 
 || *Settings screen* || *Widget* ||
