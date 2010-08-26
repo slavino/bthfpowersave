@@ -1,3 +1,4 @@
+#labels Featured
 = Version history =
 
 26^th^ August 2010 - version *1.0.12* 
