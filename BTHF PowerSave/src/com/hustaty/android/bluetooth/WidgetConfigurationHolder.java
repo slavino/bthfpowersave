@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 public class WidgetConfigurationHolder {
@@ -20,6 +21,9 @@ public class WidgetConfigurationHolder {
 	//whether process outgoing calls
 	private Boolean processOutgoingCalls; 
 	
+	//context of application
+	private static Context context;
+	
 	public static final String SWITCH_OFF_BT_AFTER_CALL_ENDED = "switchOffBTAfterCallEnded";
 	public static final String PROCESS_OUTGOING_CALLS = "processOutgoingCalls";
 	public static final String ENABLED = "enabled";
@@ -27,19 +31,24 @@ public class WidgetConfigurationHolder {
 	//application configuration instance
 	private static WidgetConfigurationHolder instance;
 	
-	private WidgetConfigurationHolder() {
+	private WidgetConfigurationHolder(Context context) {
 		this.enabled = false;
 		this.switchOffBTAfterCallEnded = true;
 		this.processOutgoingCalls = true;
+		WidgetConfigurationHolder.context = context;
 	}
 	
 	/**
 	 * returning instance
 	 * @return
 	 */
-	public static WidgetConfigurationHolder getInstance() {
+	public static WidgetConfigurationHolder getInstance(Context context) {
 		if(instance == null) {
-			instance = new WidgetConfigurationHolder();
+			instance = new WidgetConfigurationHolder(context);
+			if(context != null) {
+				SharedPreferences settings = context.getSharedPreferences(WidgetConfigure.PREFS_NAME, Activity.MODE_PRIVATE);
+				loadPreferences(settings);
+			} 
 		}
 		return instance;
 	}
@@ -87,6 +96,11 @@ public class WidgetConfigurationHolder {
 		this.processOutgoingCalls = processOutgoingCalls;
 	}
 	
+	public static void loadPreferences() {
+		SharedPreferences settings = context.getSharedPreferences(WidgetConfigure.PREFS_NAME, Activity.MODE_PRIVATE);
+		loadPreferences(settings);
+	}
+	
 	/**
 	 * load configuration from SharedPreferences
 	 * @param settings
@@ -94,25 +108,24 @@ public class WidgetConfigurationHolder {
 	public static void loadPreferences(SharedPreferences settings) {
 		
 		//get toggle button stored value
-		getInstance()
+		getInstance(context)
 				.setSwitchOffBTAfterCallEnded(
-						settings
-								.getBoolean(
-										WidgetConfigurationHolder.SWITCH_OFF_BT_AFTER_CALL_ENDED,
-										Boolean.TRUE));
+						settings.getBoolean(
+								WidgetConfigurationHolder.SWITCH_OFF_BT_AFTER_CALL_ENDED,
+								Boolean.TRUE));
 
 	    //get toggle button stored value - process outgoing calls
-		getInstance().setProcessOutgoingCalls(
+		getInstance(context).setProcessOutgoingCalls(
 				settings.getBoolean(
 						WidgetConfigurationHolder.PROCESS_OUTGOING_CALLS,
 						Boolean.TRUE));
 		
 	    //global on/off
-		getInstance().setEnabled(
+		getInstance(context).setEnabled(
 				settings.getBoolean(WidgetConfigurationHolder.ENABLED,
 						Boolean.FALSE));
 
-	    Log.d(LOG_TAG, "Loaded configuration from SharedPreferences: " + getInstance().toString());
+	    Log.d(LOG_TAG, "Loaded configuration from SharedPreferences: " + getInstance(context).toString());
 	}
 	
 	/**
