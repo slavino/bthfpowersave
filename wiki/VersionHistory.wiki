@@ -1,6 +1,5 @@
-#release notes
-
 = Version history =
+
 26^th^ August 2010 - version *1.0.12* 
   * fixed service auto start when application's master switch is off
 26^th^ August 2010 - version *1.0.11*
