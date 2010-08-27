@@ -7,6 +7,7 @@ Source for this report is personal experience and feedback form located here: [h
 = Working phones and accessories =
 || *Phone* || *Bluetooth accessory* ||
 || HTC Desire (2.1update1) || Jabra BT160 ||
+|| HTC Desire (2.2) || Bluetiger BH-M20 ||
 || HTC Desire (2.2) || Fiat Bravo ||
 || HTC Hero (2.1update1) || Plantronics Voyager 520 ||
 || HTC Hero (2.1update1) || Plantronics Voyager 530 ||
