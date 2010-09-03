@@ -89,14 +89,21 @@
 	  		android:textSize="12dp"
 	  		android:linksClickable="true"
 	  		android:layout_marginTop="50dp"/>
-  		<Button 
-			android:text="@string/save_config"
-			android:id="@+id/config_save_button"
-			android:layout_width="fill_parent"
+  		<LinearLayout 
+			android:layout_width="fill_parent" 
 			android:layout_height="wrap_content"
-			android:gravity="center_horizontal"
-			android:layout_marginTop="30px"
-			/>
+			android:orientation="horizontal"
+			android:gravity="center_horizontal">
+		  		<Button 
+					android:text="@string/save_config"
+					android:id="@+id/config_save_button"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:gravity="center_horizontal|center_vertical"
+					android:layout_marginTop="30px"
+					android:drawableLeft="@drawable/floppy"
+					/>
+		</LinearLayout>
 	</LinearLayout>
 	</ScrollView>
 </LinearLayout>
