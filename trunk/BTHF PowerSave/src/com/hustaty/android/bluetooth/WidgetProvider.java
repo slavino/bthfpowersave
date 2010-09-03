@@ -45,6 +45,9 @@ public class WidgetProvider extends AppWidgetProvider {
 		
 		PendingIntent pendingIntentClick = PendingIntent.getBroadcast(context, 0, clickIntent, 0);
 		updateView.setOnClickPendingIntent(R.id.imagebutton, pendingIntentClick);
+		
+		Log.d(LOG_TAG, "Setting pending intent");
+		
 		for(int id : appWidgetIds){
 			appWidgetManager.updateAppWidget(id, updateView);
 		}
