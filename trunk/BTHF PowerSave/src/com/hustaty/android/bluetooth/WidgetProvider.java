@@ -27,6 +27,7 @@ public class WidgetProvider extends AppWidgetProvider {
 
 		Intent clickIntent = new Intent(WidgetConfigure.WIDGET_CLICK);
 		
+		WidgetConfigurationHolder.getInstance(context);
 		WidgetConfigurationHolder.loadPreferences(
 				context.getSharedPreferences(WidgetConfigure.PREFS_NAME,
 						Activity.MODE_PRIVATE));
