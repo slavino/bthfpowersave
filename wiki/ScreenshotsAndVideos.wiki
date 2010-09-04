@@ -5,5 +5,5 @@
 
 || *Settings screen* || *Widget* ||
 || [http://bthfpowersave.googlecode.com/svn/trunk/configuration_screen.png] || [http://bthfpowersave.googlecode.com/svn/trunk/widgetonhomescreen.png] ||
-|| *configuration activity* || *Videos* ||
+|| *Configuration Activity* || *Videos* ||
 || [http://bthfpowersave.googlecode.com/svn/trunk/configuration_activity.png] || [http://www.youtube.com/watch?v=hOqE-WGa6QQ BTHF PowerSave - incomingcall] <br/>     [http://www.youtube.com/watch?v=wao3QnLK0gE BTHF PowerSave - outgoing  call] ||
