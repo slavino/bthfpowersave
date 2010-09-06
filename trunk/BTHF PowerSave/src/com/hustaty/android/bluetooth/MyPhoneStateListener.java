@@ -1,3 +1,19 @@
+/*
+ *	This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
 package com.hustaty.android.bluetooth;
 
 import android.app.Activity;
@@ -9,6 +25,11 @@ import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
+/**
+ * 
+ * @author Slavomir Hustaty
+ *
+ */
 public class MyPhoneStateListener extends PhoneStateListener {
 
 	// logger entry
@@ -26,7 +47,7 @@ public class MyPhoneStateListener extends PhoneStateListener {
 	@Override
 	public void onCallStateChanged(int state, String incomingNumber) {
 
-		SharedPreferences settings = service.getSharedPreferences(WidgetConfigure.PREFS_NAME, Activity.MODE_PRIVATE);
+		SharedPreferences settings = service.getSharedPreferences(WidgetConfigure.PREFS_NAME, Activity.MODE_WORLD_WRITEABLE);
 		WidgetConfigurationHolder.loadPreferences(settings);
 		
 		bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -77,7 +98,7 @@ public class MyPhoneStateListener extends PhoneStateListener {
 	/**
 	 * method to check whether call is outgoing - based on incomingNumber information
 	 * @param incomingNumber
-	 * @return
+	 * @return true if empty incoming number is provided, false otherwise
 	 */
 	private boolean isOutgoingCall(String incomingNumber) {
 		if("".equals(incomingNumber) || incomingNumber==null) {
@@ -88,7 +109,7 @@ public class MyPhoneStateListener extends PhoneStateListener {
 	}
 	
 	/**
-	 * perform connect to device - don't rely on platform anymore
+	 * perform connection to BT device - don't rely on platform anymore
 	 */
 	private void connectToDevice() {
 		AudioManager audioManager = (AudioManager) service.getSystemService(Context.AUDIO_SERVICE);
