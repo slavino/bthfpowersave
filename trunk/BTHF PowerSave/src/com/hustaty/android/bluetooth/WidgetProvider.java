@@ -46,12 +46,10 @@ public class WidgetProvider extends AppWidgetProvider {
 		RemoteViews updateView = new RemoteViews(context.getPackageName(), R.layout.widget);
 		appWidgetManager.updateAppWidget(appWidgetIds, updateView);
 
-		Intent clickIntent = new Intent(WidgetConfigure.WIDGET_CLICK);
-		
 		WidgetConfigurationHolder.getInstance(context);
 		WidgetConfigurationHolder.loadPreferences(
 				context.getSharedPreferences(WidgetConfigure.PREFS_NAME,
-						Activity.MODE_PRIVATE));
+						Activity.MODE_WORLD_WRITEABLE));
 
 		if (WidgetConfigurationHolder.getInstance(context).isEnabled()) {
 			updateView.setImageViewResource(R.id.imagebutton, R.drawable.on);
@@ -64,6 +62,8 @@ public class WidgetProvider extends AppWidgetProvider {
 				NotificationService.stop(context);
 			}
 		}
+		
+		Intent clickIntent = new Intent(WidgetConfigure.WIDGET_CLICK);
 		
 		PendingIntent pendingIntentClick = PendingIntent.getBroadcast(context, 0, clickIntent, 0);
 		updateView.setOnClickPendingIntent(R.id.imagebutton, pendingIntentClick);
