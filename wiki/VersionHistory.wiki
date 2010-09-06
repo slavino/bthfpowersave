@@ -3,6 +3,9 @@
 
 = Version history =
 
+6^th^ September 2010 - version *1.0.15*
+  * adding licence text to sources
+  * refactoring MODE_PRIVATE in SharedPreferences to MODE_PUBLIC_WRITABLE (to ensute that this is not causing troubles with widget)
 4^th^ September 2010 - version *1.0.14*
   * fixing reported widget wrong behavior
 3^rd^ September 2010 - version *1.0.13*
