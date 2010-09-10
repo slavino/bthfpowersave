@@ -99,7 +99,7 @@ public class WidgetProvider extends AppWidgetProvider {
         context.sendBroadcast(configSavedIntent);
 		
 		super.onDeleted(context, appWidgetIds);
-	}
+ 	}
 
 	@Override
 	public void onDisabled(Context context) {
@@ -144,7 +144,14 @@ public class WidgetProvider extends AppWidgetProvider {
 			} else {
 				updateView.setImageViewResource(R.id.imagebutton, R.drawable.off);
 			}
+
+			Intent clickIntent = new Intent(WidgetConfigure.WIDGET_CLICK);
 			
+			PendingIntent pendingIntentClick = PendingIntent.getBroadcast(context, 0, clickIntent, 0);
+			updateView.setOnClickPendingIntent(R.id.imagebutton, pendingIntentClick);
+			
+			Log.d(LOG_TAG, "Setting pending intent");
+
 			//get Appwidget manager and change widget image
 			AppWidgetManager.getInstance(context).updateAppWidget(thisWidget, updateView);
 			
