@@ -15,6 +15,7 @@ Source for this report is personal experience and feedback form located here: [h
 || HTC Wildfire (2.1update1) || Sony Ericsson mw600 ||
 || Motorola Droid (2.2) || Motorola H700 ||
 || Nexus One (2.1update1) || Plantronics Voyager 520 ||
+|| Samsung Galaxy S || Citroen C4 ||
 || Samsung Galaxy S || Nokia BH-602 ||
 
 = Not working combinations of phones and accessories =
