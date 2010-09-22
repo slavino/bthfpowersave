@@ -7,14 +7,15 @@ Source for this report is personal experience and feedback form located here: [h
 = Working phones and accessories =
 || *Phone* || *Bluetooth accessory* ||
 || HTC Desire (2.1update1) || Jabra BT160 ||
+|| HTC Desire (2.1update1) || Plantronics (no model given) ||
 || HTC Desire (2.2) || Bluetiger BH-M20 ||
 || HTC Desire (2.2) || Fiat Bravo ||
 || HTC Hero (2.1update1) || Jabra BT8040 ||
 || HTC Hero (2.1update1) || Plantronics Voyager 520 ||
 || HTC Hero (2.1update1) || Plantronics Voyager 530 ||
 || HTC Wildfire (2.1update1) || Jabra BT2080 ||
-|| HTC Wildfire (2.1update1) || Parrot ck3100 ||
-|| HTC Wildfire (2.1update1) || Sony Ericsson mw600 ||
+|| HTC Wildfire (2.1update1) || Parrot CK3100 ||
+|| HTC Wildfire (2.1update1) || Sony Ericsson MW600 ||
 || Motorola Droid (2.2) || Motorola H700 ||
 || Motorola Droid X (2.1update1) || Motorola H720 ||
 || Nexus One (2.1update1) || Plantronics Voyager 520 ||
