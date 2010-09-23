@@ -12,6 +12,9 @@
 	<string name="switchOffEntrireService">Ein/Ausschalten den Service (Hauptschalter)</string>
 	<string name="processAlsoOutgoingCalls">Bedienen auch ausgehende Gespriche</string>
 	<string name="infoText">Besuchen Sie https://code.google.com/p/bthfpowersave f\u00fcr mehr Informationen \u00fcber diesen Produkt.</string>
+	<string name="feedbackText">Besuchen Sie Feedback-Formular und geben Sie Ihre Kommentare: http://tinyurl.com/2f7dh8k</string>
 	<string name="toastTextAfterDeletingWidget">BTHF PowerSave wahr ausgechaltet</string>
+	<string name="toastTextOnBTDeviceNotPaired">BTHF PowerSave konnte keine passende gepaarte BT-Geräte finden.</string>
+	<string name="toastTextOnBTAdapterNotReachable">Bluetooth Adapter ist nicht erreichbar.\nDies könnte schwerwiegende Probleme für BTHF PowerSave verursachen.</string>
 
 </resources>

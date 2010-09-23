@@ -14,5 +14,7 @@
 	<string name="infoText">Visit https://code.google.com/p/bthfpowersave for more information about this product.</string>
 	<string name="feedbackText">Visit feedback form and provide your comments: http://tinyurl.com/2f7dh8k</string>
 	<string name="toastTextAfterDeletingWidget">BTHF PowerSave went OFF</string>
+	<string name="toastTextOnBTDeviceNotPaired">BTHF PowerSave wasn\u0027t able to find any paired BT devices for communication.</string>
+	<string name="toastTextOnBTAdapterNotReachable">Bluetooth adapter is not reachable.\nThis might cause serious problems to BTHF PowerSave.</string>
 
 </resources>

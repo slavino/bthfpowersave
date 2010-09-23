@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">BTHF PowerSave</string>
     <string name="service_name">BTHF PowerSave Service</string>
 	<string name="save_config">Save</string>
@@ -15,4 +16,5 @@
 	<string name="toastTextAfterDeletingWidget">BTHF PowerSave went OFF</string>
 	<string name="toastTextOnBTDeviceNotPaired">BTHF PowerSave wasn\u0027t able to find any paired BT devices for communication.</string>
 	<string name="toastTextOnBTAdapterNotReachable">Bluetooth adapter is not reachable.\nThis might cause serious problems to BTHF PowerSave.</string>
+
 </resources>
