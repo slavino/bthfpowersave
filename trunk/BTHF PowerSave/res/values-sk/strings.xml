@@ -12,6 +12,9 @@
 	<string name="switchOffEntrireService">Zapnúť/Vypnúť pripájanie sa na handsfree (hlavný vypínač)</string>
 	<string name="processAlsoOutgoingCalls">Spracovávať aj odchádzajúce hovory</string>
 	<string name="infoText">Navštívte https://code.google.com/p/bthfpowersave pre viac informácií o tomto produkte.</string>
+	<string name="feedbackText">Navštívte feedback formulár a pošlite Vaše komentáre: http://tinyurl.com/2f7dh8k</string>
 	<string name="toastTextAfterDeletingWidget">BTHF PowerSave bol vypnutý</string>
+	<string name="toastTextOnBTDeviceNotPaired">BTHF PowerSave nevedel nájsř žiadne napárované BT zariadenie pre komunikáciu.</string>
+	<string name="toastTextOnBTAdapterNotReachable">Bluetooth adaptér nie je dostupný.\nMohlo by to spôsobiť vážne problémy pre BTHF PowerSave.</string>
 
 </resources>
