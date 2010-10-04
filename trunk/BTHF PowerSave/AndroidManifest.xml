@@ -9,6 +9,7 @@
 				<!-- <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" /> -->
 				<action android:name="com.hustaty.android.bluetooth.action.CONFIG_SAVED" />
 				<action android:name="android.intent.action.PHONE_STATE" />
+				<action android:name="android.bluetooth.device.action.ACL_CONNECTED" />
 			</intent-filter> 
 		</receiver>
 

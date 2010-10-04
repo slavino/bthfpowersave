@@ -40,12 +40,16 @@ public class WidgetConfigurationHolder {
 	//whether process outgoing calls
 	private Boolean processOutgoingCalls; 
 	
+	//force BT connection from AudioManager
+	private Boolean forceBTConnection;
+	
 	//context of application
 	private static Context context;
 	
 	public static final String SWITCH_OFF_BT_AFTER_CALL_ENDED = "switchOffBTAfterCallEnded";
 	public static final String PROCESS_OUTGOING_CALLS = "processOutgoingCalls";
 	public static final String ENABLED = "enabled";
+	public static final String FORCE_BT = "forceBTConnection";
 	
 	//application configuration instance
 	private static WidgetConfigurationHolder instance;
@@ -54,6 +58,7 @@ public class WidgetConfigurationHolder {
 		this.enabled = false;
 		this.switchOffBTAfterCallEnded = true;
 		this.processOutgoingCalls = true;
+		this.forceBTConnection = true;
 		WidgetConfigurationHolder.context = context;
 	}
 	
@@ -115,6 +120,14 @@ public class WidgetConfigurationHolder {
 		this.processOutgoingCalls = processOutgoingCalls;
 	}
 	
+	public Boolean getForceBTConnection() {
+		return forceBTConnection;
+	}
+
+	public void setForceBTConnection(Boolean forceBTConnection) {
+		this.forceBTConnection = forceBTConnection;
+	}
+
 	public static void loadPreferences() {
 		SharedPreferences settings = context.getSharedPreferences(WidgetConfigure.PREFS_NAME, Activity.MODE_WORLD_WRITEABLE);
 		loadPreferences(settings);
@@ -144,6 +157,11 @@ public class WidgetConfigurationHolder {
 				settings.getBoolean(WidgetConfigurationHolder.ENABLED,
 						Boolean.FALSE));
 
+		//force BT connection
+		getInstance(context).setForceBTConnection(
+				settings.getBoolean(WidgetConfigurationHolder.FORCE_BT,
+						Boolean.TRUE));
+
 	    Log.d(LOG_TAG, "Loaded configuration from SharedPreferences: " + getInstance(context).toString());
 	}
 	
@@ -170,9 +188,10 @@ public class WidgetConfigurationHolder {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("{" + ENABLED + ":" + enabled + "; ");
+		sb.append(this.getClass().getName() + " {" + ENABLED + ":" + enabled + "; ");
 		sb.append(SWITCH_OFF_BT_AFTER_CALL_ENDED + ":" + switchOffBTAfterCallEnded + "; ");
-		sb.append(PROCESS_OUTGOING_CALLS + ":" + processOutgoingCalls + ";}");
+		sb.append(PROCESS_OUTGOING_CALLS + ":" + processOutgoingCalls + ";");
+		sb.append(FORCE_BT + ":" + forceBTConnection + ";}");
 		return sb.toString();
 	}
 
