@@ -117,11 +117,14 @@ public class MyPhoneStateListener extends PhoneStateListener {
 			//do nothing 
 		} else {
 			if (bluetoothAdapter.isDiscovering()) {
-				Log.d(LOG_TAG, "Cancelling discovery");
+				Log.d(LOG_TAG, "#connectToDevice(): Cancelling discovery");
 				bluetoothAdapter.cancelDiscovery();
 			}
-			Log.d(LOG_TAG, "Audio Manager: requiring #setBluetoothScoOn(true)");
+			Log.d(LOG_TAG, "#connectToDevice(): Audio Manager: requiring #setBluetoothScoOn(true)");
+
+//			audioManager.setSpeakerphoneOn(true);
 			audioManager.setBluetoothScoOn(true);
+			
 		}
 	}
 	
