@@ -9,6 +9,7 @@ Source for this report is personal experience and feedback form located here: [h
 || HTC Desire (2.1update1) || Jabra BT160 ||
 || HTC Desire (2.1update1) || Plantronics (no model specified) ||
 || HTC Desire (2.1update1) || Honda Civic 2006 ||
+|| HTC Desire (2.1update1) || Bluetrek ST1 ||
 || HTC Desire (2.2) || Bluetiger BH-M20 ||
 || HTC Desire (2.2) || built in car ||
 || HTC Desire (2.2) || Fiat Bravo ||
