@@ -120,7 +120,7 @@ public class WidgetConfigurationHolder {
 		this.processOutgoingCalls = processOutgoingCalls;
 	}
 	
-	public Boolean getForceBTConnection() {
+	public Boolean isForceBTConnection() {
 		return forceBTConnection;
 	}
 

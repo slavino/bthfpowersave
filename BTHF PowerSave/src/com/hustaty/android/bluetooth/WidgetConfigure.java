@@ -76,6 +76,10 @@ public class WidgetConfigure extends Activity {
 	    ToggleButton processOutgoingCallsToggleButton = (ToggleButton) findViewById(R.id.processOutgoingCallsToggleButton);
 	    processOutgoingCallsToggleButton.setChecked(WidgetConfigurationHolder.getInstance(getApplicationContext()).isProcessOutgoingCalls());
 
+	    //force BT connection
+	    ToggleButton forceBTConnectionToggleButton = (ToggleButton) findViewById(R.id.forceBTConnectionToggleButton);
+	    forceBTConnectionToggleButton.setChecked(WidgetConfigurationHolder.getInstance(getApplicationContext()).isForceBTConnection());
+
 	    if (extras != null) {
 			appWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
 		}
@@ -102,6 +106,10 @@ public class WidgetConfigure extends Activity {
 
                 ToggleButton processOutgoingCallsToggleButton = (ToggleButton) findViewById(R.id.processOutgoingCallsToggleButton);
                 editor.putBoolean(WidgetConfigurationHolder.PROCESS_OUTGOING_CALLS, processOutgoingCallsToggleButton.isChecked());
+
+                //set ON/OFF processing outgoing calls
+                ToggleButton forceBTConnectionToggleButton = (ToggleButton) findViewById(R.id.forceBTConnectionToggleButton);
+                editor.putBoolean(WidgetConfigurationHolder.FORCE_BT, forceBTConnectionToggleButton.isChecked());
 
                 // Commit the edits!
                 editor.commit();
