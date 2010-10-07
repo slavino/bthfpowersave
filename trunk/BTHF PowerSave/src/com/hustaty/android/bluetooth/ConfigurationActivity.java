@@ -56,6 +56,10 @@ public class ConfigurationActivity extends Activity {
 	    ToggleButton processOutgoingCallsToggleButton = (ToggleButton) findViewById(R.id.processOutgoingCallsToggleButton);
 	    processOutgoingCallsToggleButton.setChecked(WidgetConfigurationHolder.getInstance(getApplicationContext()).isProcessOutgoingCalls());
 	    
+	    //force BT connection
+	    ToggleButton forceBTConnectionToggleButton = (ToggleButton) findViewById(R.id.forceBTConnectionToggleButton);
+	    forceBTConnectionToggleButton.setChecked(WidgetConfigurationHolder.getInstance(getApplicationContext()).isForceBTConnection());
+	    
 	    Button saveSettingsButton = (Button) findViewById(R.id.config_save_button);
 	    saveSettingsButton.setOnClickListener(new OnClickListener() {
 			@Override
@@ -75,6 +79,10 @@ public class ConfigurationActivity extends Activity {
                 //set ON/OFF processing outgoing calls
                 ToggleButton processOutgoingCallsToggleButton = (ToggleButton) findViewById(R.id.processOutgoingCallsToggleButton);
                 editor.putBoolean(WidgetConfigurationHolder.PROCESS_OUTGOING_CALLS, processOutgoingCallsToggleButton.isChecked());
+
+                //set ON/OFF processing outgoing calls
+                ToggleButton forceBTConnectionToggleButton = (ToggleButton) findViewById(R.id.forceBTConnectionToggleButton);
+                editor.putBoolean(WidgetConfigurationHolder.FORCE_BT, forceBTConnectionToggleButton.isChecked());
 
                 // Commit the edits!
                 editor.commit();

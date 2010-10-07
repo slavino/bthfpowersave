@@ -68,7 +68,25 @@
 					android:text="@string/processAlsoOutgoingCalls"
 					android:paddingLeft="5sp"
 					android:textSize="15sp" />
+		</LinearLayout>
+		<LinearLayout 
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+				<ToggleButton 
+					android:textOn="@string/toggleButton_YES"
+					android:textOff="@string/toggleButton_NO" 
+					android:id="@+id/forceBTConnectionToggleButton" 
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content">
+				</ToggleButton>
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" 
+					android:text="@string/forceBTConnection"
+					android:paddingLeft="5sp"
+					android:textSize="15sp" />
 		</LinearLayout> 
+		 
 		<TextView 
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content" 
@@ -101,8 +119,7 @@
 					android:layout_height="wrap_content"
 					android:gravity="center_horizontal|center_vertical"
 					android:layout_marginTop="30px"
-					android:drawableLeft="@drawable/floppy"
-					/>
+					android:drawableLeft="@drawable/floppy"/>
 		</LinearLayout>
 	</LinearLayout>
 	</ScrollView>

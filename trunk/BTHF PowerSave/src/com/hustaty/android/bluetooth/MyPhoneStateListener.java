@@ -121,9 +121,10 @@ public class MyPhoneStateListener extends PhoneStateListener {
 				bluetoothAdapter.cancelDiscovery();
 			}
 			Log.d(LOG_TAG, "#connectToDevice(): Audio Manager: requiring #setBluetoothScoOn(true)");
-
-//			audioManager.setSpeakerphoneOn(true);
-			audioManager.setBluetoothScoOn(true);
+			//FIXME
+			if(WidgetConfigurationHolder.getInstance(service.getApplicationContext()).isForceBTConnection()) {
+				audioManager.setBluetoothScoOn(true);
+			}
 			
 		}
 	}
