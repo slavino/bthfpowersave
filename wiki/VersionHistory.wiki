@@ -3,7 +3,7 @@
 
 = Version history =
 7^th^ October 2010 - version *1.0.18*
-  * reported issue with no sound when no BT Audio available was resolved by adding button for disabling BT forcing via AudioManager
+  * reported [http://code.google.com/p/bthfpowersave/issues/detail?id=1&can=1 issue] with no sound when no BT Audio available was resolved by adding button for disabling BT forcing via AudioManager
 20^th^ September 2010 - version *1.0.17*
   * changing application and service icon
 10^th^ September 2010 - version *1.0.16*
