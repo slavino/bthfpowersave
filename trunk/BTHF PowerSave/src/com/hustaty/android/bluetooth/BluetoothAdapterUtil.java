@@ -105,11 +105,10 @@ public class BluetoothAdapterUtil {
 	 * @param n
 	 */
 	private static void waitNMillis(long n) {
-		long t = System.currentTimeMillis();
-		while (n > System.currentTimeMillis() - t) {
-			// :-) 
-			n++;
-			n--;
+		try {
+			Thread.sleep(n);
+		} catch (InterruptedException e) {
+			Log.e(LOG_TAG, "#waitNMillis() " + e.getMessage());
 		}
 	}
 
