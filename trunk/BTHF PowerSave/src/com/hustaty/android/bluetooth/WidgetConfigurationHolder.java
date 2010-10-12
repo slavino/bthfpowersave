@@ -58,7 +58,7 @@ public class WidgetConfigurationHolder {
 		this.enabled = false;
 		this.switchOffBTAfterCallEnded = true;
 		this.processOutgoingCalls = true;
-		this.forceBTConnection = true;
+		this.forceBTConnection = false;
 		WidgetConfigurationHolder.context = context;
 	}
 	
@@ -160,7 +160,7 @@ public class WidgetConfigurationHolder {
 		//force BT connection
 		getInstance(context).setForceBTConnection(
 				settings.getBoolean(WidgetConfigurationHolder.FORCE_BT,
-						Boolean.TRUE));
+						Boolean.FALSE));
 
 	    Log.d(LOG_TAG, "Loaded configuration from SharedPreferences: " + getInstance(context).toString());
 	}
