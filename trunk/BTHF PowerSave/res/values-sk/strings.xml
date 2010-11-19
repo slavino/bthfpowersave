@@ -16,5 +16,5 @@
 	<string name="toastTextAfterDeletingWidget">BTHF PowerSave bol vypnutý</string>
 	<string name="toastTextOnBTDeviceNotPaired">BTHF PowerSave nevedel nájsř žiadne napárované BT zariadenie pre komunikáciu.</string>
 	<string name="toastTextOnBTAdapterNotReachable">Bluetooth adaptér nie je dostupný.\nMohlo by to spôsobiť vážne problémy pre BTHF PowerSave.</string>
-
+	<string name="forceBTConnection">Donútiť AudioManager presmerovať zvuk do bluetooth headsetu okamžite pri prichádzajúcom hovore.</string>
 </resources>

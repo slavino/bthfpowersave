@@ -17,23 +17,17 @@
 package com.hustaty.android.bluetooth;
 
 import java.util.List;
-import java.util.Set;
 
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
 import android.app.Service;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothClass;
-import android.bluetooth.BluetoothDevice;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
 import android.os.IBinder;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
-import android.widget.Toast;
 
 /**
  * 
@@ -45,7 +39,7 @@ public class NotificationService extends Service {
 	// logger entry
 	private final static String LOG_TAG = NotificationService.class.getSimpleName();
 	
-	private Handler instanceHandler;
+	//private Handler instanceHandler;
 
 	private final PhoneStateListener ringListener = new MyPhoneStateListener(this);
 
@@ -65,23 +59,23 @@ public class NotificationService extends Service {
 		super.onStart(intent, startId);
 
 		Log.i(LOG_TAG, "Starting notification service");
-		instanceHandler = new Handler();
+		//instanceHandler = new Handler();
 
 		final TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
 
 		// Register the ring listener
 		tm.listen(ringListener, PhoneStateListener.LISTEN_CALL_STATE);
 
-		Thread t = new Thread() {
-			@Override
-			public synchronized void start() {
-				super.start();
-				//notify user if there is any problem
-				checkBluetoothDevices();
-			}
-		};
+//		Thread t = new Thread() {
+//			@Override
+//			public synchronized void start() {
+//				super.start();
+//				//notify user if there is any problem
+//				checkBluetoothDevices();
+//			}
+//		};
 
-		//t.start();
+//		t.start();
 		
 	}
 
@@ -132,49 +126,49 @@ public class NotificationService extends Service {
 		Log.i(LOG_TAG, "Sending intent to stop notification service");
 	}
 
-	/**
-	 * performs check whether there are BT peripherals matching needs of this application
-	 */
-	private void checkBluetoothDevices() {
-		BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-		
-		if(bluetoothAdapter != null) {
-			boolean btStateBeforeCheck = bluetoothAdapter.isEnabled();
-			
-			if(!btStateBeforeCheck) {
-				BluetoothAdapterUtil.startBluetoothAdapter();		
-			}
-
-			//let's see if we have at least one bonded/paired BT device for connecting when call arrives
-			Set<BluetoothDevice> btDevices = bluetoothAdapter.getBondedDevices();
-			for (BluetoothDevice btDevice : btDevices) {
-				
-				Log.d(LOG_TAG, "checking device " + btDevice.getName());
-
-				switch(btDevice.getBluetoothClass().getDeviceClass()) {
-				case BluetoothClass.Device.AUDIO_VIDEO_WEARABLE_HEADSET:
-				case BluetoothClass.Device.AUDIO_VIDEO_HANDSFREE:
-				case BluetoothClass.Device.AUDIO_VIDEO_CAR_AUDIO:
-				case 1036: //magic number - Jabra BT 160 fix
-				case BluetoothClass.Device.AUDIO_VIDEO_UNCATEGORIZED: //magic number - Sony-Ericsson HBH-DS980
-					Log.i(LOG_TAG, "One of expected bluetooth device classes was found.");
-					return;
-				}
-			}
-			
-			if(!btStateBeforeCheck) {
-				BluetoothAdapterUtil.stopBluetoothAdapter();		
-			}
-			
-		} else {
-			//something is wrong with BTadapter
-			Toast.makeText(this.getApplicationContext(), R.string.toastTextOnBTAdapterNotReachable, Toast.LENGTH_LONG).show();
-			Log.w(LOG_TAG, "Problems with BT adapter.");
-			return;
-		}
-		
-		//report that no device was found
-		Toast.makeText(this.getApplicationContext(), R.string.toastTextOnBTDeviceNotPaired, Toast.LENGTH_LONG).show();
-		Log.i(LOG_TAG, "!!! None of expected bluetooth device classes was found.");
-	}
+//	/**
+//	 * performs check whether there are BT peripherals matching needs of this application
+//	 */
+//	private void checkBluetoothDevices() {
+//		BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+//		
+//		if(bluetoothAdapter != null) {
+//			boolean btStateBeforeCheck = bluetoothAdapter.isEnabled();
+//			
+//			if(!btStateBeforeCheck) {
+//				BluetoothAdapterUtil.startBluetoothAdapter();		
+//			}
+//
+//			//let's see if we have at least one bonded/paired BT device for connecting when call arrives
+//			Set<BluetoothDevice> btDevices = bluetoothAdapter.getBondedDevices();
+//			for (BluetoothDevice btDevice : btDevices) {
+//				
+//				Log.d(LOG_TAG, "checking device " + btDevice.getName());
+//
+//				switch(btDevice.getBluetoothClass().getDeviceClass()) {
+//				case BluetoothClass.Device.AUDIO_VIDEO_WEARABLE_HEADSET:
+//				case BluetoothClass.Device.AUDIO_VIDEO_HANDSFREE:
+//				case BluetoothClass.Device.AUDIO_VIDEO_CAR_AUDIO:
+//				case 1036: //magic number - Jabra BT 160 fix
+//				case BluetoothClass.Device.AUDIO_VIDEO_UNCATEGORIZED: //magic number - Sony-Ericsson HBH-DS980
+//					Log.i(LOG_TAG, "One of expected bluetooth device classes was found.");
+//					return;
+//				}
+//			}
+//			
+//			if(!btStateBeforeCheck) {
+//				BluetoothAdapterUtil.stopBluetoothAdapter();		
+//			}
+//			
+//		} else {
+//			//something is wrong with BTadapter
+//			Toast.makeText(this.getApplicationContext(), R.string.toastTextOnBTAdapterNotReachable, Toast.LENGTH_LONG).show();
+//			Log.w(LOG_TAG, "Problems with BT adapter.");
+//			return;
+//		}
+//		
+//		//report that no device was found
+//		Toast.makeText(this.getApplicationContext(), R.string.toastTextOnBTDeviceNotPaired, Toast.LENGTH_LONG).show();
+//		Log.i(LOG_TAG, "!!! None of expected bluetooth device classes was found.");
+//	}
 }
