@@ -16,5 +16,5 @@
 	<string name="toastTextAfterDeletingWidget">BTHF PowerSave wahr ausgechaltet</string>
 	<string name="toastTextOnBTDeviceNotPaired">BTHF PowerSave konnte keine passende gepaarte BT-Geräte finden.</string>
 	<string name="toastTextOnBTAdapterNotReachable">Bluetooth Adapter ist nicht erreichbar.\nDies könnte schwerwiegende Probleme für BTHF PowerSave verursachen.</string>
-
+	<string name="forceBTConnection">Force AudioManager to transfer sound to bluetooth headset immediatelly as incoming call appears.</string>
 </resources>
