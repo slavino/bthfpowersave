@@ -2,19 +2,19 @@
 <resources>
     
     <string name="app_name">BTHF PowerSave</string>
-    <string name="service_name">BTHF PowerSave Service</string>
+    <string name="service_name">BTHF PowerSave Dienst</string>
 	<string name="save_config">Speichern</string>
 	<string name="toggleButton_YES">JA</string>
 	<string name="toggleButton_NO">NEIN</string>
-	<string name="toggleButton_ON">EIN</string>
-	<string name="toggleButton_OFF">AUS</string>
-	<string name="keepBtOnAfterCallEnded">Soll das Bluetooth Modul ausgeschaltet werden nach Gesprich beendet ist?</string>
-	<string name="switchOffEntrireService">Ein/Ausschalten den Service (Hauptschalter)</string>
-	<string name="processAlsoOutgoingCalls">Bedienen auch ausgehende Gespriche</string>
-	<string name="infoText">Besuchen Sie https://code.google.com/p/bthfpowersave f\u00fcr mehr Informationen \u00fcber diesen Produkt.</string>
-	<string name="feedbackText">Besuchen Sie Feedback-Formular und geben Sie Ihre Kommentare: http://tinyurl.com/2f7dh8k</string>
-	<string name="toastTextAfterDeletingWidget">BTHF PowerSave wahr ausgechaltet</string>
-	<string name="toastTextOnBTDeviceNotPaired">BTHF PowerSave konnte keine passende gepaarte BT-Geräte finden.</string>
-	<string name="toastTextOnBTAdapterNotReachable">Bluetooth Adapter ist nicht erreichbar.\nDies könnte schwerwiegende Probleme für BTHF PowerSave verursachen.</string>
-	<string name="forceBTConnection">Force AudioManager to transfer sound to bluetooth headset immediatelly as incoming call appears.</string>
+	<string name="toggleButton_ON">EINGESCHALTET</string>
+	<string name="toggleButton_OFF">AUSGESCHALTET</string>
+	<string name="keepBtOnAfterCallEnded">Soll das Bluetooth Modul nach Gespr\u00e4chsende automatisch wieder ausgeschaltet werden?</string>
+	<string name="switchOffEntrireService">BTHF PowerSave Dienst (Hauptschalter)</string>
+	<string name="processAlsoOutgoingCalls">Auch ausgehende Gespr\u00e4che behandeln?</string>
+	<string name="infoText">Besuchen Sie https://code.google.com/p/bthfpowersave f\u00fcr um mehr Informationen \u00fcber dieses Produkt zu erhalten.</string>
+	<string name="feedbackText">Besuchen Sie das Feedback-Formular und teilen Sie uns Ihre Meinung mit: http://tinyurl.com/2f7dh8k</string>
+	<string name="toastTextAfterDeletingWidget">BTHF PowerSave war ausgeschaltet</string>
+	<string name="toastTextOnBTDeviceNotPaired">BTHF PowerSave konnte keine passenden gepaarten Bluetooth-Ger\u00e4te finden.</string>
+	<string name="toastTextOnBTAdapterNotReachable">Der Bluetooth Adapter ist nicht erreichbar.\nDies k\u00f6nnte dazu f\u00fchren, dass die Funktion von BTHF PowerSave nicht gegeben ist.</string>
+	<string name="forceBTConnection">Den AudioManager dazu zwingen, den Ton sofort an ein Bluetooth Headset zu\u00fbermitteln, sobald ein ankommender Anruf eingeht.</string>
 </resources>

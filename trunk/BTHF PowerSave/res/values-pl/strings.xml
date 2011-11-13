@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="app_name">BTHF PowerSave</string>
+    <string name="service_name">Serwis BTHF PowerSave</string>
+	<string name="save_config">Zapisz</string>
+	<string name="toggleButton_YES">TAK</string>
+	<string name="toggleButton_NO">NIE</string>
+	<string name="toggleButton_ON">WLACZONY</string>
+	<string name="toggleButton_OFF">WYLACZONY</string>
+	<string name="keepBtOnAfterCallEnded">Automatycznie wylacz Modul Bluetooth po zakonczeniu rozmowy?</string>
+	<string name="switchOffEntrireService">Serwis BTHF PowerSave (Glowny wylacznik)</string>
+	<string name="processAlsoOutgoingCalls">Tez uzywac serwis przy wychodzacych rozmowach?</string>
+	<string name="infoText">Odwiedz https://code.google.com/p/bthfpowersave f\u00fcr aby uzyskac wiecej informacji o tym produkcie.</string>
+	<string name="feedbackText">Przekaz nam swoja opinie: http://tinyurl.com/2f7dh8k</string>
+	<string name="toastTextAfterDeletingWidget">BTHF PowerSave byl wylaczony</string>
+	<string name="toastTextOnBTDeviceNotPaired">BTHF PowerSave nie mogl znalesc zadnych pasujacych par uzadzien Bluetooth.</string>
+	<string name="toastTextOnBTAdapterNotReachable">Adapter Bluetooth nie byl osiagalny. To moze oznaczac, ze BTHF PowerSave nie moze spelniac swojej funkcji.</string>
+	<string name="forceBTConnection">Zmusic AudioManager\u0027a aber natychmiast przekazal dzwienk do zestawu sluchawkowego Bluetooth przy przychodzacej rozmowie.</string>
+</resources>
