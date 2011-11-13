@@ -62,7 +62,8 @@ public class ConfigurationActivity extends Activity {
 	    
 	    Button saveSettingsButton = (Button) findViewById(R.id.config_save_button);
 	    saveSettingsButton.setOnClickListener(new OnClickListener() {
-			@Override
+	    	
+//			@Override
 			public void onClick(View v) {
 				
                 SharedPreferences settings = getSharedPreferences(WidgetConfigure.PREFS_NAME, MODE_WORLD_WRITEABLE);

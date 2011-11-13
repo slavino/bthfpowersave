@@ -88,7 +88,7 @@ public class WidgetConfigure extends Activity {
 		
 	    Button saveSettingsButton = (Button) findViewById(R.id.config_save_button);
 	    saveSettingsButton.setOnClickListener(new OnClickListener() {
-			@Override
+//			@Override
 			public void onClick(View v) {
                 if(Log.isLoggable(LOG_TAG, Log.DEBUG)) {
                 	Log.d(LOG_TAG, "Saving configuration." + WidgetConfigurationHolder.getInstance(getApplicationContext()).toString());
