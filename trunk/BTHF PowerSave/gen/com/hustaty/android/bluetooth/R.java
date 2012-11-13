@@ -12,14 +12,14 @@ public final class R {
     }
     public static final class drawable {
         public static final int floppy=0x7f020000;
-        public static final int icon=0x7f020001;
-        public static final int off=0x7f020002;
-        public static final int on=0x7f020003;
+        public static final int off=0x7f020001;
+        public static final int on=0x7f020002;
     }
     public static final class id {
-        public static final int Base=0x7f060004;
-        public static final int config_save_button=0x7f060003;
-        public static final int imagebutton=0x7f060005;
+        public static final int Base=0x7f060005;
+        public static final int config_save_button=0x7f060004;
+        public static final int forceBTConnectionToggleButton=0x7f060003;
+        public static final int imagebutton=0x7f060006;
         public static final int processOutgoingCallsToggleButton=0x7f060002;
         public static final int switchOffBTAfterCallEndedToggleButton=0x7f060001;
         public static final int switchOffService=0x7f060000;
@@ -32,6 +32,7 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f050000;
         public static final int feedbackText=0x7f05000b;
+        public static final int forceBTConnection=0x7f05000f;
         public static final int infoText=0x7f05000a;
         public static final int keepBtOnAfterCallEnded=0x7f050007;
         public static final int processAlsoOutgoingCalls=0x7f050009;
