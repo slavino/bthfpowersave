@@ -4,6 +4,8 @@
 = Comments =
 Source for this report is personal experience and feedback form located here: [http://tinyurl.com/2f7dh8k]
 
+Results from the survey [https://docs.google.com/a/ixonos.com/spreadsheet/pub?key=0AiFAQLWVei9_dHU2UElINktGMVVfVDlLaGd2QUpPTXc&single=true&gid=0&range=a1:f250&output=html]
+
 = Working phones and accessories =
 
 <table border="1">
